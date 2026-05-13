@@ -1,0 +1,42 @@
+---
+import { type Lang, useTranslations, defaultLang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const projectBase = lang === 'ro' ? '/ro/proiecte/' : lang === 'hu' ? '/hu/projektek/' : '/projects/';
+---
+
+<section id="projects" class="section fade-in fade-in-delay-2">
+  <div class="container">
+    <span class="section-label">{t('projects')}</span>
+
+    <div class="project-block">
+      <h3 class="project-name">{t('isthisaiName')}</h3>
+      <p class="project-status project-status--live">{t('isthisaiStatus')}</p>
+      <p class="project-description">{t('isthisaiDescription')}</p>
+      <p class="project-reason">{t('isthisaiReason')}</p>
+      <a href="https://isthisaislop.help" target="_blank" rel="noopener" class="project-cta">{t('isthisaiCta')} →</a>
+    </div>
+
+    <div class="project-block">
+      <h3 class="project-name">{t('clujparticipaName')}</h3>
+      <p class="project-status project-status--progress">{t('clujparticipaStatus')}</p>
+      <p class="project-description">{t('clujparticipaDescription')}</p>
+      <p class="project-reason">{t('clujparticipaReason')}</p>
+      <div class="project-qualifier">{t('clujparticipaQualifier')}</div>
+      <a href={projectBase + 'clujparticipa/'} class="project-cta">{t('clujparticipaCta')} →</a>
+    </div>
+
+    <div class="project-block">
+      <h3 class="project-name">{t('notesAndExperimentsName')}</h3>
+      <p class="project-status project-status--ongoing">{t('notesAndExperimentsStatus')}</p>
+      <p class="project-description">{t('notesAndExperimentsDescription')}</p>
+      <a href={projectBase + 'notes-and-experiments/'} class="project-cta">{t('notesAndExperimentsCta')} →</a>
+    </div>
+  </div>
+</section>

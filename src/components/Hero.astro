@@ -1,0 +1,67 @@
+---
+import { type Lang, useTranslations, defaultLang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const notesPath = lang === 'ro' ? '/ro/notite/' : lang === 'hu' ? '/hu/jegyzetek/' : '/notes/';
+const projectsPath = lang === 'ro' ? '/ro/proiecte/' : lang === 'hu' ? '/hu/projektek/' : '/projects/';
+---
+
+<section class="section hero-section fade-in">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <h1 class="hero-headline">{t('heroHeadline')}</h1>
+      <p class="hero-subhead">{t('heroSubhead')}</p>
+      <div class="btn-group">
+        <a href="#projects" class="btn btn-primary">{t('heroCta')}</a>
+        <a href={notesPath} class="btn btn-secondary">{t('heroCtaSecondary')}</a>
+      </div>
+    </div>
+    <div class="hero-portrait">
+      <div class="portrait">
+        <img src="/portrait.svg" alt="Gergo Balogh" width="180" height="180" loading="eager" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-6);
+    align-items: center;
+  }
+
+  .hero-headline {
+    margin-bottom: var(--space-3);
+  }
+
+  .hero-subhead {
+    font-size: var(--step-1);
+    color: var(--muted);
+    margin-bottom: var(--space-4);
+    max-width: var(--measure);
+  }
+
+  @media (max-width: 768px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-5);
+    }
+
+    .hero-portrait {
+      order: -1;
+    }
+
+    .portrait {
+      width: 140px;
+      height: 140px;
+    }
+  }
+</style>

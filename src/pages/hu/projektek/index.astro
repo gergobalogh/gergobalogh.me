@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n/ui';
+import Projects from '../../../components/Projects.astro';
+
+const lang = 'hu';
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title={t('projects') + ' — ' + t('siteTitle')} description={t('projectsIntro')}>
+  <section class="section">
+    <div class="container">
+      <Projects lang={lang} />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,22 @@
+---
+import { type Lang, useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="section">
+  <div class="container">
+    <span class="section-label">{t('elsewhereTitle')}</span>
+    <p class="section-intro">{t('elsewhereIntro')}</p>
+    <ul class="elsewhere-list">
+      <li><a href="https://github.com/gergobalogh" target="_blank" rel="noopener">{t('github')}</a></li>
+      <li><a href="https://ro.linkedin.com/in/gergobalogh" target="_blank" rel="noopener">{t('linkedin')}</a></li>
+      <li><a href="mailto:baloghgergo@gmail.com">{t('email')}</a></li>
+    </ul>
+  </div>
+</section>

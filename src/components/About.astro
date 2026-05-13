@@ -1,0 +1,25 @@
+---
+import { type Lang, useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="section fade-in fade-in-delay-1">
+  <div class="container">
+    <span class="section-label">{t('aboutTitle')}</span>
+    <p class="about-body">{t('aboutBody')}</p>
+  </div>
+</section>
+
+<style>
+  .about-body {
+    font-size: var(--step-1);
+    max-width: var(--measure);
+    line-height: 1.7;
+  }
+</style>

@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/ui';
+
+const lang = 'en';
+const t = useTranslations(lang);
+const project = 'isthisai';
+
+let title = '';
+let status = '';
+let description = '';
+let reason = '';
+let qualifier = '';
+let cta = '';
+let ctaUrl = '';
+
+if (project === 'isthisai') {
+  title = t('isthisaiName');
+  status = t('isthisaiStatus');
+  description = t('isthisaiDescription');
+  reason = t('isthisaiReason');
+  cta = t('isthisaiCta');
+  ctaUrl = 'https://isthisaislop.help';
+} else if (project === 'clujparticipa') {
+  title = t('clujparticipaName');
+  status = t('clujparticipaStatus');
+  description = t('clujparticipaDescription');
+  reason = t('clujparticipaReason');
+  qualifier = t('clujparticipaQualifier');
+  cta = t('clujparticipaCta');
+} else if (project === 'notes-and-experiments') {
+  title = t('notesAndExperimentsName');
+  status = t('notesAndExperimentsStatus');
+  description = t('notesAndExperimentsDescription');
+  cta = t('notesAndExperimentsCta');
+  ctaUrl = lang === 'ro' ? '/ro/notite/' : lang === 'hu' ? '/hu/jegyzetek/' : '/notes/';
+}
+
+const projectsBase = lang === 'ro' ? '/ro/proiecte/' : lang === 'hu' ? '/hu/projektek/' : '/projects/';
+const statusClass = project === 'isthisai' ? 'project-status--live' : project === 'clujparticipa' ? 'project-status--progress' : 'project-status--ongoing';
+---
+
+<BaseLayout lang={lang} title={title + ' — ' + t('siteTitle')} description={description}>
+  <article class="note-detail">
+    <div class="container">
+      <h1>{title}</h1>
+      <p class:list={['project-status', statusClass]}>
+        {t('projectStatus')}: {status}
+      </p>
+
+      <div class="prose" style="margin-top: var(--space-5);">
+        <p style="font-size: var(--step-1);">{description}</p>
+
+        {reason && (
+          <div style="margin-top: var(--space-5);">
+            <h2>{t('projectWhy')}</h2>
+            <p>{reason}</p>
+          </div>
+        )}
+
+        {qualifier && (
+          <div class="project-qualifier" style="margin-top: var(--space-4);">
+            {qualifier}
+          </div>
+        )}
+      </div>
+
+      <div style="margin-top: var(--space-5);">
+        {ctaUrl ? (
+          <a href={ctaUrl} class="btn btn-primary" target={ctaUrl.startsWith('http') ? '_blank' : undefined} rel={ctaUrl.startsWith('http') ? 'noopener' : undefined}>
+            {cta} →
+          </a>
+        ) : (
+          <span class="btn btn-primary" style="opacity: 0.5; cursor: default;">
+            {cta}
+          </span>
+        )}
+      </div>
+
+      <div style="margin-top: var(--space-6);">
+        <a href={projectsBase} class="btn btn-secondary">{t('backToProjects')}</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

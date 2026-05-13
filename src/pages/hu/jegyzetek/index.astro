@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../../i18n/ui';
+import { getCollection } from 'astro:content';
+
+const lang = 'hu';
+const t = useTranslations(lang);
+
+const allNotes = await getCollection('notes');
+const notes = allNotes
+  .filter(n => n.data.lang === lang)
+  .sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
+---
+
+<BaseLayout lang={lang} title={t('notesPageTitle') + ' — ' + t('siteTitle')} description={t('notesPageIntro')}>
+  <section class="section">
+    <div class="container">
+      <h1>{t('notesPageTitle')}</h1>
+      <p class="section-intro" style="margin-top: var(--space-3);">{t('notesPageIntro')}</p>
+
+      {notes.length > 0 ? (
+        <ul class="notes-list">
+          {notes.map(note => (
+            <li>
+              <a href={'/hu/jegyzetek/' + note.id} class="note-title">{note.data.title}</a>
+              <p class="note-summary">{note.data.summary}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="note-summary">Jegyzetek hamarosan.</p>
+      )}
+
+      <div style="margin-top: var(--space-6);">
+        <a href="/hu/" class="btn btn-secondary">{t('backToHome')}</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

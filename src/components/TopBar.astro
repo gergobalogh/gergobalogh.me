@@ -1,0 +1,131 @@
+---
+import { type Lang, useTranslations, languages, defaultLang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const langPrefix = (l: Lang) => l === defaultLang ? '/' : `/${l}/`;
+const notesPath = (l: Lang) => {
+  if (l === 'ro') return '/ro/notite/';
+  if (l === 'hu') return '/hu/jegyzetek/';
+  return '/notes/';
+};
+const projectsPath = (l: Lang) => {
+  if (l === 'ro') return '/ro/proiecte/';
+  if (l === 'hu') return '/hu/projektek/';
+  return '/projects/';
+};
+
+const langEntries = Object.entries(languages) as [Lang, string][];
+---
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a href={langPrefix(lang)} class="topbar-name">{t('siteTitle')}</a>
+    <nav class="topbar-nav" aria-label="Main navigation">
+      <a href={projectsPath(lang)}>{t('projects')}</a>
+      <a href={notesPath(lang)}>{t('notes')}</a>
+      <div class="lang-switcher" aria-label="Language switcher">
+        {langEntries.map(([code, name], i) => (
+          <>
+            {i > 0 && <span class="lang-sep" aria-hidden="true">/</span>}
+            {code === lang ? (
+              <span class="lang-current" aria-current="true">{code.toUpperCase()}</span>
+            ) : (
+              <a href={langPrefix(code)} hreflang={code} lang={code}>{code.toUpperCase()}</a>
+            )}
+          </>
+        ))}
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .topbar {
+    border-bottom: 1px solid var(--line);
+    padding-block: var(--space-3);
+  }
+
+  .topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+  }
+
+  .topbar-name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: var(--step-1);
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .topbar-name:hover {
+    color: var(--link-hover);
+  }
+
+  .topbar-nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    font-size: var(--step--1);
+  }
+
+  .topbar-nav > a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .topbar-nav > a:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: var(--step--1);
+    margin-left: var(--space-2);
+  }
+
+  .lang-switcher a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .lang-switcher a:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+
+  .lang-current {
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  .lang-sep {
+    color: var(--line);
+    margin: 0 0.15rem;
+  }
+
+  @media (max-width: 600px) {
+    .topbar-inner {
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .topbar-nav {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+</style>

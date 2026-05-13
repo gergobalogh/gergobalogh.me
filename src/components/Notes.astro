@@ -1,0 +1,38 @@
+---
+import { type Lang, useTranslations } from '../i18n/ui';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const allNotes = await getCollection('notes');
+const notes = allNotes
+  .filter(n => n.data.lang === lang)
+  .sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
+
+const notesBase = lang === 'ro' ? '/ro/notite/' : lang === 'hu' ? '/hu/jegyzetek/' : '/notes/';
+---
+
+<section class="section fade-in fade-in-delay-3">
+  <div class="container">
+    <span class="section-label">{t('notes')}</span>
+    <p class="section-intro">{t('notesIntro')}</p>
+
+    {notes.length > 0 ? (
+      <ul class="notes-list">
+        {notes.map(note => (
+          <li>
+            <a href={notesBase + note.id} class="note-title">{note.data.title}</a>
+            <p class="note-summary">{note.data.summary}</p>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="note-summary">{lang === 'en' ? 'Notes coming soon.' : lang === 'ro' ? 'Note în curând.' : 'Jegyzetek hamarosan.'}</p>
+    )}
+  </div>
+</section>

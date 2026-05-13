@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+import { useTranslations } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes', ({ data }) => data.lang === 'ro');
+  return notes.map(note => ({
+    params: { slug: note.id },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+const lang = 'ro';
+const t = useTranslations(lang);
+---
+
+<BaseLayout lang={lang} title={note.data.title + ' — ' + t('siteTitle')} description={note.data.summary}>
+  <article class="note-detail">
+    <div class="container">
+      <h1>{note.data.title}</h1>
+      <div class="prose">
+        <Content />
+      </div>
+      <div style="margin-top: var(--space-6);">
+        <a href="/ro/notite/" class="btn btn-secondary">{t('backToNotes')}</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

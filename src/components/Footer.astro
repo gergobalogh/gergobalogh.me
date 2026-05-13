@@ -1,0 +1,58 @@
+---
+import { type Lang, useTranslations } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span class="footer-name">{t('footerName')}</span>
+    <div class="footer-links">
+      <a href="https://github.com/gergobalogh" target="_blank" rel="noopener">{t('github')}</a>
+      <a href="https://ro.linkedin.com/in/gergobalogh" target="_blank" rel="noopener">{t('linkedin')}</a>
+      <a href="mailto:baloghgergo@gmail.com">{t('email')}</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid var(--line);
+    padding-block: var(--space-4);
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .footer-name {
+    font-weight: 600;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: var(--space-4);
+  }
+
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .footer-links a:hover {
+    color: var(--text);
+    text-decoration: underline;
+  }
+</style>
