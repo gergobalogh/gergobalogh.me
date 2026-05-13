@@ -53,6 +53,8 @@ export const translations = {
     // Notes section
     notesIntro: 'Working notes on civic software, publishing, and building useful things.',
 
+    projectsIntro: 'Projects I work on — civic tools, experiments, and small internet products.',
+
     // Elsewhere
     elsewhereTitle: 'Elsewhere',
     elsewhereIntro: 'If you want to follow the work or get in touch, these are the best places to find me.',
@@ -112,6 +114,8 @@ export const translations = {
 
     notesIntro: 'Note de lucru despre software civic, publicare și construirea de lucruri utile.',
 
+    projectsIntro: 'Proiecte la care lucrez — instrumente civice, experimente și produse mici de internet.',
+
     elsewhereTitle: 'În altă parte',
     elsewhereIntro: 'Dacă vrei să urmărești activitatea sau să iei legătura, acestea sunt cele mai bune locuri.',
     github: 'GitHub',
@@ -166,6 +170,8 @@ export const translations = {
     notesAndExperimentsCta: 'Jegyzetek olvasása',
 
     notesIntro: 'Munkajegyzetek polgári szoftverekről, publikálásról és hasznos dolgok építéséről.',
+
+    projectsIntro: 'Projektek, amelyeken dolgozom — polgári eszközök, kísérletek és kis internetes termékek.',
 
     elsewhereTitle: 'Máshol',
     elsewhereIntro: 'Ha követni szeretnéd a munkámat vagy kapcsolatba lépni, ezek a legjobb helyek.',

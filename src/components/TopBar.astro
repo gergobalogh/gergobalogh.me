@@ -30,7 +30,7 @@ const langEntries = Object.entries(languages) as [Lang, string][];
       <a href={projectsPath(lang)}>{t('projects')}</a>
       <a href={notesPath(lang)}>{t('notes')}</a>
       <div class="lang-switcher" aria-label="Language switcher">
-        {langEntries.map(([code, name], i) => (
+        {langEntries.map(([code, _name], i) => (
           <>
             {i > 0 && <span class="lang-sep" aria-hidden="true">/</span>}
             {code === lang ? (

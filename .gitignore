@@ -16,5 +16,8 @@ npm-debug.log*
 
 # Astro
 .astro/
+
+# Wrangler
+.wrangler/
 src/content/**/.astro/
 src/content/**/node_modules/

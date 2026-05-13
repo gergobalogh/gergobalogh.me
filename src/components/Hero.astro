@@ -1,5 +1,5 @@
 ---
-import { type Lang, useTranslations, defaultLang } from '../i18n/ui';
+import { type Lang, useTranslations } from '../i18n/ui';
 
 interface Props {
   lang: Lang;
@@ -9,7 +9,6 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 
 const notesPath = lang === 'ro' ? '/ro/notite/' : lang === 'hu' ? '/hu/jegyzetek/' : '/notes/';
-const projectsPath = lang === 'ro' ? '/ro/proiecte/' : lang === 'hu' ? '/hu/projektek/' : '/projects/';
 ---
 
 <section class="section hero-section fade-in">

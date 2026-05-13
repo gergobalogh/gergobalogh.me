@@ -1,43 +1,20 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { useTranslations } from '../../../i18n/ui';
+import { type Lang, useTranslations } from '../../../i18n/ui';
 
-const lang = 'hu';
+const lang: Lang = 'hu';
 const t = useTranslations(lang);
-const project = 'clujparticipa';
 
-let title = '';
-let status = '';
-let description = '';
-let reason = '';
-let qualifier = '';
-let cta = '';
-let ctaUrl = '';
+const title = t('clujparticipaName');
+const status = t('clujparticipaStatus');
+const description = t('clujparticipaDescription');
+const reason = t('clujparticipaReason');
+const qualifier = t('clujparticipaQualifier');
+const cta = t('clujparticipaCta');
+const ctaUrl: string = '';
 
-if (project === 'isthisai') {
-  title = t('isthisaiName');
-  status = t('isthisaiStatus');
-  description = t('isthisaiDescription');
-  reason = t('isthisaiReason');
-  cta = t('isthisaiCta');
-  ctaUrl = 'https://isthisaislop.help';
-} else if (project === 'clujparticipa') {
-  title = t('clujparticipaName');
-  status = t('clujparticipaStatus');
-  description = t('clujparticipaDescription');
-  reason = t('clujparticipaReason');
-  qualifier = t('clujparticipaQualifier');
-  cta = t('clujparticipaCta');
-} else if (project === 'notes-and-experiments') {
-  title = t('notesAndExperimentsName');
-  status = t('notesAndExperimentsStatus');
-  description = t('notesAndExperimentsDescription');
-  cta = t('notesAndExperimentsCta');
-  ctaUrl = lang === 'ro' ? '/ro/notite/' : lang === 'hu' ? '/hu/jegyzetek/' : '/notes/';
-}
-
-const projectsBase = lang === 'ro' ? '/ro/proiecte/' : lang === 'hu' ? '/hu/projektek/' : '/projects/';
-const statusClass = project === 'isthisai' ? 'project-status--live' : project === 'clujparticipa' ? 'project-status--progress' : 'project-status--ongoing';
+const projectsBase = '/hu/projektek/';
+const statusClass = 'project-status--progress';
 ---
 
 <BaseLayout lang={lang} title={title + ' — ' + t('siteTitle')} description={description}>
