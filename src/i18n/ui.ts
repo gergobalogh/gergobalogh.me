@@ -11,7 +11,7 @@ export const defaultLang: Lang = 'en';
 export const translations = {
   en: {
     // Site
-    siteTitle: 'Gergo Balogh',
+    siteTitle: 'Gergő Balogh',
     siteDescription: 'Software engineer building playful and civic tools on the internet.',
 
     // Nav
@@ -73,11 +73,11 @@ export const translations = {
     backToHome: 'Back to home',
 
     // Footer
-    footerName: 'Gergo Balogh',
+    footerName: 'Gergő Balogh',
   },
 
   ro: {
-    siteTitle: 'Gergo Balogh',
+    siteTitle: 'Gergő Balogh',
     siteDescription: 'Inginer software care construiește instrumente ludice și civice pe internet.',
 
     projects: 'Proiecte',
@@ -128,11 +128,11 @@ export const translations = {
     backToNotes: 'Înapoi la note',
     backToHome: 'Înapoi la pagina principală',
 
-    footerName: 'Gergo Balogh',
+    footerName: 'Gergő Balogh',
   },
 
   hu: {
-    siteTitle: 'Gergo Balogh',
+    siteTitle: 'Gergő Balogh',
     siteDescription: 'Szoftvermérnök, aki játékos és polgári eszközöket épít az interneten.',
 
     projects: 'Projektek',
@@ -183,7 +183,7 @@ export const translations = {
     backToNotes: 'Vissza a jegyzetekhez',
     backToHome: 'Vissza a főoldalra',
 
-    footerName: 'Gergo Balogh',
+    footerName: 'Gergő Balogh',
   },
 } as const;
 

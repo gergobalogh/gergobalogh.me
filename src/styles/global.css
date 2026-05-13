@@ -308,8 +308,8 @@ p {
 
 /* ===== Portrait ===== */
 .portrait {
-  width: 180px;
-  height: 180px;
+  width: 280px;
+  height: 280px;
   border-radius: var(--radius);
   background: var(--surface-2);
   flex-shrink: 0;
