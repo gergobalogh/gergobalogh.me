@@ -21,7 +21,7 @@ export const translations = {
 
     // Hero
     heroHeadline: 'I build playful and civic software.',
-    heroSubhead: 'I make tools that help people see more clearly, participate directly, and act on what they know.',
+    heroSubhead: 'I make tools that help people see more clearly, take part directly, and act on what they know.',
     heroCta: 'See projects',
     heroCtaSecondary: 'Read notes',
 
@@ -32,14 +32,14 @@ export const translations = {
     // isthisai
     isthisaiName: 'isthisai',
     isthisaiStatus: 'Live',
-    isthisaiDescription: 'A game about telling the difference. You look at images and video and judge whether they were made by a person or a machine.',
+    isthisaiDescription: 'A game about telling the difference. You look at images and videos and judge whether they were made by a person or a machine.',
     isthisaiReason: 'AI-generated media is getting harder to spot. This project turns that problem into something interactive, social, and easier to talk about.',
     isthisaiCta: 'Play isthisai',
 
     // clujparticipa
     clujparticipaName: 'clujparticipa',
     clujparticipaStatus: 'In progress',
-    clujparticipaDescription: 'A participatory budgeting prototype for Cluj-Napoca. Residents submit proposals, build support, and place ideas on a map — a tool for surfacing what the city might want before formal decisions are made.',
+    clujparticipaDescription: 'A participatory budgeting prototype for Cluj-Napoca. Residents submit proposals, build support, and place ideas on a map — a tool for surfacing what residents might want before formal decisions are made.',
     clujparticipaReason: 'Cities need better ways for residents to surface local ideas and build support around them before formal politics takes over.',
     clujparticipaQualifier: 'This is a coalition-building and participation tool, not a production voting system.',
     clujparticipaCta: 'See clujparticipa',
@@ -47,7 +47,7 @@ export const translations = {
     // Civic chatbot
     civicChatbotName: 'Civic chatbot experiment',
     civicChatbotStatus: 'Prototype',
-    civicChatbotDescription: 'A read-only chatbot that puts 200K public records behind a plain-language question. Citizens ask in Romanian, the bot answers from complaints, council decisions, permits, and local news.',
+    civicChatbotDescription: 'A read-only chatbot that puts 200,000 public records behind a plain-language question. Citizens ask in Romanian, the bot answers from complaints, council decisions, permits, and local news.',
     civicChatbotReason: 'Government portals sort by form fields and dropdowns. A citizen with a question faces a search problem, not an information problem.',
     civicChatbotCta: 'Read the note',
 
@@ -89,7 +89,7 @@ export const translations = {
 
   ro: {
     siteTitle: 'Gergő Balogh',
-    siteDescription: 'Inginer software care construiește instrumente ludice și civice pe internet.',
+    siteDescription: 'Sunt inginer software în Cluj-Napoca. Dezvolt instrumente civice și produse mici care fac internetul mai util.',
 
     projects: 'Proiecte',
     notes: 'Note',
