@@ -76,6 +76,8 @@ export const translations = {
 
     // Footer
     footerName: 'Gergő Balogh',
+
+    notesComingSoon: 'Notes coming soon.',
   },
 
   ro: {
@@ -96,12 +98,12 @@ export const translations = {
 
     isthisaiName: 'isthisai',
     isthisaiStatus: 'Lansat',
-    isthisaiDescription: 'Un joc despre a face diferența. Privești imagini și videoclipuri și judeci dacă au fost create de o persoană sau de o mașină.',
-    isthisaiReason: 'Media generată de AI devine din ce în ce mai greu de identificat. Acest proiect transformă acea problemă într-un lucru interactiv, social și mai ușor de discutat.',
+    isthisaiDescription: 'Un joc despre cum să recunoști diferența. Privești imagini și videoclipuri și judeci dacă au fost create de o persoană sau de o mașină.',
+    isthisaiReason: 'Conținutul generat de AI devine din ce în ce mai greu de identificat. Acest proiect transformă acea problemă într-un lucru interactiv, social și mai ușor de discutat.',
     isthisaiCta: 'Joacă isthisai',
 
     clujparticipaName: 'clujparticipa',
-    clujparticipaStatus: 'În lucru',
+    clujparticipaStatus: 'În curs de dezvoltare',
     clujparticipaDescription: 'Un prototip de bugetare participativă pentru Cluj-Napoca. Rezidenții trimit propuneri, construiesc sprijin și plasează idei pe hartă — un instrument pentru a scoate la suprafață ce ar putea dori orașul înainte ca deciziile formale să fie luate.',
     clujparticipaReason: 'Orașele au nevoie de modalități mai bune ca rezidenții să aducă idei locale la suprafață și să construiască sprijin în jurul lor înainte de a prelua politica formală.',
     clujparticipaQualifier: 'Acesta este un instrument de construire a coalițiilor și participare, nu un sistem de votare în producție.',
@@ -130,31 +132,33 @@ export const translations = {
     projectWhatUsersDo: 'Ce poți face',
     backToProjects: 'Înapoi la proiecte',
     backToNotes: 'Înapoi la note',
-    backToHome: 'Înapoi la pagina principală',
+    backToHome: 'Înapoi la pagina de start',
 
     footerName: 'Gergő Balogh',
+
+    notesComingSoon: 'Note în curând.',
   },
 
   hu: {
     siteTitle: 'Gergő Balogh',
-    siteDescription: 'Szoftvermérnök, aki játékos és polgári eszközöket épít az interneten.',
+    siteDescription: 'Szoftvermérnök, aki játékos és civil eszközöket épít az interneten.',
 
     projects: 'Projektek',
     notes: 'Jegyzetek',
     elsewhere: 'Máshol',
 
-    heroHeadline: 'Játékos és polgári szoftvereket építek.',
-    heroSubhead: 'Olyan eszközöket készítek, amelyek segítenek az embereknek tisztábban látni, közvetlenül részt venni és arra támaszkodva cselekedni, amit tudnak.',
+    heroHeadline: 'Játékos és civil szoftvereket építek.',
+    heroSubhead: 'Olyan eszközöket készítek, amelyek segítenek az embereknek tisztábban látni, közvetlenül részt venni és hogy tudásukra alapozva cselekedhessenek.',
     heroCta: 'Projektek megtekintése',
-    heroCtaSecondary: 'jegyzetek olvasása',
+    heroCtaSecondary: 'Jegyzetek olvasása',
 
     aboutTitle: 'Rólam',
-    aboutBody: 'Kolozsvári szoftvermérnök vagyok. Polgári technológiával, közérdekű szoftverekkel és kis internetes termékekkel foglalkozom. Használatra építek, nem bemutatóra.',
+    aboutBody: 'Kolozsvári szoftvermérnök vagyok. Civil technológiával, közérdekű szoftverekkel és kis internetes termékekkel foglalkozom. Használatra építek, nem bemutatóra.',
 
     isthisaiName: 'isthisai',
     isthisaiStatus: 'Élő',
     isthisaiDescription: 'Egy játék a különbségtételről. Képeket és videókat nézel, és eldöntöd, hogy ember vagy gép készítette-e.',
-    isthisaiReason: 'Az AI által generált média egyre nehezebben felismerhető. Ez a projekt interaktívvá, társaságivá és beszélgethetőbbé teszi ezt a problémát.',
+    isthisaiReason: 'Az AI által generált média egyre nehezebben felismerhető. Ez a projekt interaktívvá és társaságivá teszi a kérdést, és segít elindítani a párbeszédet erről a problémáról.',
     isthisaiCta: 'Játssz az isthisai-val',
 
     clujparticipaName: 'clujparticipa',
@@ -162,14 +166,14 @@ export const translations = {
     clujparticipaDescription: 'Egy részvételi költségvetési prototípus Kolozsvár számára. A lakosok javaslatokat nyújtanak be, támogatást építenek és ötleteket helyeznek el a térképen — egy eszköz arra, hogy felszínre hozzák, mit szeretne a város, mielőtt a formális döntések megszületnének.',
     clujparticipaReason: 'A városoknak jobb módokra van szükségük, hogy a lakosok felszínre hozhassák helyi ötleteiket, és támogatást építsenek köréjük, mielőtt a formális politika átveszi az irányítást.',
     clujparticipaQualifier: 'Ez egy koalícióépítő és részvételi eszköz, nem egy éles szavazási rendszer.',
-    clujparticipaCta: 'Lásd: clujparticipa',
+    clujparticipaCta: 'Tovább a projekthez',
 
     notesAndExperimentsName: 'Jegyzetek és kísérletek',
     notesAndExperimentsStatus: 'Folyamatos',
-    notesAndExperimentsDescription: 'Rövid írások és kis kísérletek a publikálásról, polgári szoftverekről, internetes termékekről és a nyilvános építésről.',
+    notesAndExperimentsDescription: 'Rövid írások és kis kísérletek a publikálásról, civil szoftverekről, internetes termékekről és a nyilvános építésről.',
     notesAndExperimentsCta: 'Jegyzetek olvasása',
 
-    notesIntro: 'Munkajegyzetek polgári szoftverekről, publikálásról és hasznos dolgok építéséről.',
+    notesIntro: 'Munkajegyzetek civil szoftverekről, publikálásról és hasznos dolgok építéséről.',
 
     projectsIntro: 'Projektek, amelyeken dolgozom — polgári eszközök, kísérletek és kis internetes termékek.',
 
@@ -180,7 +184,8 @@ export const translations = {
     email: 'Email',
 
     notesPageTitle: 'Jegyzetek',
-    notesPageIntro: 'Jegyzetek arról, amin gondolkodom — polgári szoftverek, publikálás és az internet kis javításai.',
+    notesPageIntro: 'Jegyzetek arról, amin gondolkodom — civil szoftverek, publikálás és az internet kis javításai.',
+    notesComingSoon: 'Jegyzetek hamarosan.',
 
     projectStatus: 'Státusz',
     projectWhy: 'Miért létezik',

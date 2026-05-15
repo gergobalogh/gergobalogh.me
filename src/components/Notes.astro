@@ -32,7 +32,7 @@ const notesBase = lang === 'ro' ? '/ro/notite/' : lang === 'hu' ? '/hu/jegyzetek
         ))}
       </ul>
     ) : (
-      <p class="note-summary">{lang === 'en' ? 'Notes coming soon.' : lang === 'ro' ? 'Note în curând.' : 'Jegyzetek hamarosan.'}</p>
+      <p class="note-summary">{t('notesComingSoon')}</p>
     )}
   </div>
 </section>
