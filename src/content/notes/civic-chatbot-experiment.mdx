@@ -1,0 +1,25 @@
+---
+title: "A chatbot for the city: small experiments in civic AI"
+summary: "What happens when you put 200K public records behind a read-only chatbot and let citizens ask questions in plain Romanian?"
+date: 2025-05-13
+lang: "en"
+---
+
+Cluj-Napoca publishes a lot of public data — over 200,000 citizen complaints, 16,000 council decisions, 19,000 construction permits, 145,000 local news articles. The data exists. Finding it does not.
+
+Government portals sort by form fields and dropdowns. You need to know the right category, the right filter, the right button. A citizen with a question — "what are people complaining about on Calea Florești?" — is facing a search problem, not an information problem.
+
+The chatbot is a small experiment in removing that gap. You type a question in Romanian. A language model figures out which datasets to query, with what parameters. It fetches the data, then generates a short cited answer. No accounts, no forms, no navigation.
+
+The constraints are deliberate:
+
+- **Read-only.** It cannot file complaints, pay taxes, or book appointments. It shows what is already public.
+- **No personal data.** It refuses requests for CNPs, phone numbers, home addresses. No exceptions.
+- **Cited answers.** Every factual claim links back to the source record. If the data is sparse or uncertain, it says so.
+- **Evaluated, not vibes-based.** A 55-question test suite runs against it with audit-verified results. The gate passes at 96%+ before anything ships.
+
+The approach is low-stakes on purpose. A chatbot that hallucinates a parking rule is annoying. A chatbot that hallucinates a legal right is dangerous. Keeping the scope to public read-only data, with explicit refusal on anything transactional, makes the worst-case failure tolerable.
+
+Current status: the bot covers complaints, council decisions, construction permits, and local news. It runs, it is tested, and it is live. What it cannot do yet — real-time transit, air quality, complaint filing, voice — is Phase 2+ work that requires the information-only foundation to hold first.
+
+The experiment is not "can AI answer questions about a city." The experiment is "can a small, constrained, evaluated system make public data genuinely more accessible than a portal." Early returns say yes.

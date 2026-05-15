@@ -44,6 +44,13 @@ export const translations = {
     clujparticipaQualifier: 'This is a coalition-building and participation tool, not a production voting system.',
     clujparticipaCta: 'See clujparticipa',
 
+    // Civic chatbot
+    civicChatbotName: 'Civic chatbot experiment',
+    civicChatbotStatus: 'Prototype',
+    civicChatbotDescription: 'A read-only chatbot that puts 200K public records behind a plain-language question. Citizens ask in Romanian, the bot answers from complaints, council decisions, permits, and local news.',
+    civicChatbotReason: 'Government portals sort by form fields and dropdowns. A citizen with a question faces a search problem, not an information problem.',
+    civicChatbotCta: 'Read the note',
+
     // Notes and experiments
     notesAndExperimentsName: 'Notes and experiments',
     notesAndExperimentsStatus: 'Ongoing',
@@ -109,6 +116,12 @@ export const translations = {
     clujparticipaQualifier: 'Acesta este un instrument de construire a coalițiilor și participare, nu un sistem de votare în producție.',
     clujparticipaCta: 'Vezi clujparticipa',
 
+    civicChatbotName: 'Experiment chatbot civic',
+    civicChatbotStatus: 'Prototip',
+    civicChatbotDescription: 'Un chatbot doar-citire care pune 200K de înregistrări publice în spatele unei întrebări în limbaj natural. Cetățenii întreabă în română, botul răspunde din plângeri, decizii de consiliu, permise și știri locale.',
+    civicChatbotReason: 'Portalurile guvernamentale sortează după câmpuri și meniuri. Un cetățean cu o întrebare are o problemă de căutare, nu o problemă de informație.',
+    civicChatbotCta: 'Citește nota',
+
     notesAndExperimentsName: 'Note și experimente',
     notesAndExperimentsStatus: 'Continuu',
     notesAndExperimentsDescription: 'Scurte scrieri și mici experimente despre publicare, software civic, produse de internet și construire în public.',
@@ -167,6 +180,12 @@ export const translations = {
     clujparticipaReason: 'A városoknak jobb módokra van szükségük, hogy a lakosok felszínre hozhassák helyi ötleteiket, és támogatást építsenek köréjük, mielőtt a formális politika átveszi az irányítást.',
     clujparticipaQualifier: 'Ez egy koalícióépítő és részvételi eszköz, nem egy éles szavazási rendszer.',
     clujparticipaCta: 'Tovább a projekthez',
+
+    civicChatbotName: 'Polgári chatbot kísérlet',
+    civicChatbotStatus: 'Prototípus',
+    civicChatbotDescription: 'Egy csak olvasható chatbot, amely 200K nyilvános rekordot tesz elérhetővé egy egyszerű kérdés mögött. A polgárok románul kérdeznek, a bot panaszokból, tanácsi határozatokból, engedélyekből és helyi hírekből válaszol.',
+    civicChatbotReason: 'A kormányzati portálok űrlapmezők és legördülő menük szerint rendeznek. Egy kérdéssel rendelkező polgár keresési problémával néz szembe, nem információs problémával.',
+    civicChatbotCta: 'Olvassa el a jegyzetet',
 
     notesAndExperimentsName: 'Jegyzetek és kísérletek',
     notesAndExperimentsStatus: 'Folyamatos',
