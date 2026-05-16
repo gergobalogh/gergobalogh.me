@@ -11,7 +11,14 @@ export async function getStaticPaths() {
   }));
 }
 
-const { note } = Astro.props;
+const { slug } = Astro.params;
+const notes = await getCollection('notes', ({ data }) => data.lang === 'ro');
+const note = notes.find(n => n.id === slug);
+
+if (!note) {
+  return Astro.redirect('/ro/notite/');
+}
+
 const { Content } = await render(note);
 const lang = 'ro';
 const t = useTranslations(lang);
