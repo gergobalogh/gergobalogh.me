@@ -26,7 +26,7 @@ const notesBase = lang === 'ro' ? '/ro/notite/' : lang === 'hu' ? '/hu/jegyzetek
       <ul class="notes-list">
         {notes.map(note => (
           <li>
-            <a href={notesBase + note.id} class="note-title">{note.data.title}</a>
+            <a href={notesBase + note.id} class="note-title" data-umami-event="note-click" data-umami-event-slug={note.id}>{note.data.title}</a>
             <p class="note-summary">{note.data.summary}</p>
           </li>
         ))}

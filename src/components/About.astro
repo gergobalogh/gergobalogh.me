@@ -12,7 +12,7 @@ const t = useTranslations(lang);
 <section class="section fade-in fade-in-delay-1">
   <div class="container">
     <span class="section-label">{t('aboutTitle')}</span>
-    <p class="about-body">{t('aboutBody')}</p>
+    <div class="about-body" set:html={t('aboutBody')} />
   </div>
 </section>
 

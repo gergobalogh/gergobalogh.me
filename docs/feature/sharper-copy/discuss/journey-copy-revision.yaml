@@ -1,0 +1,40 @@
+name: builder-evaluates-substance
+description: "A fellow builder lands on gergobalogh.me and decides within 3 seconds whether to stay or leave based on the hero copy"
+jobs: [JOB-1, JOB-2, JOB-3]
+persona: fellow-builder
+
+steps:
+  - id: hero
+    action: "Read hero headline and subhead"
+    output: "One-sentence read: this person ships real things and thinks honestly"
+    emotional_state: "skeptical → curious"
+    shared_artifacts: [heroHeadline, heroSubhead]
+    risk: "3-second test failure — visitor thinks 'software engineer' and leaves"
+
+  - id: about
+    action: "Read About section"
+    output: "A point of view lands early: 'build for use, not demonstration'"
+    emotional_state: "curious → interested"
+    shared_artifacts: [aboutBody]
+    risk: "Reads like LinkedIn summary — momentum halved"
+
+  - id: projects
+    action: "Scan project cards"
+    output: "Each card frames why the project is interesting, not just what it is"
+    emotional_state: "interested → impressed"
+    shared_artifacts: [isthisaiDescription, clujparticipaDescription, notesAndExperimentsDescription, isthisaiCta, clujparticipaCta, isthisaiStatus, clujparticipaStatus, notesAndExperimentsStatus]
+    risk: "Descriptions define rather than frame — 'A game about telling the difference' is a definition"
+
+  - id: notes
+    action: "See notes section"
+    output: "Titles and summaries create urgency to read"
+    emotional_state: "impressed → engaged"
+    shared_artifacts: [notesIntro]
+    risk: "Intro is a category label, not a hook"
+
+  - id: leave
+    action: "Leave or follow"
+    output: "Can describe this person in one sentence"
+    emotional_state: "engaged → satisfied"
+    shared_artifacts: []
+    risk: "None — success state"

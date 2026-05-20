@@ -25,10 +25,10 @@ const langEntries = Object.entries(languages) as [Lang, string][];
 
 <header class="topbar">
   <div class="container topbar-inner">
-    <a href={langPrefix(lang)} class="topbar-name">{t('siteTitle')}</a>
+    <a href={langPrefix(lang)} class="topbar-name" data-umami-event="nav-home">{t('siteTitle')}</a>
     <nav class="topbar-nav" aria-label="Main navigation">
-      <a href={projectsPath(lang)}>{t('projects')}</a>
-      <a href={notesPath(lang)}>{t('notes')}</a>
+      <a href={projectsPath(lang)} data-umami-event="nav-projects">{t('projects')}</a>
+      <a href={notesPath(lang)} data-umami-event="nav-notes">{t('notes')}</a>
       <div class="lang-switcher" aria-label="Language switcher">
         {langEntries.map(([code, _name], i) => (
           <>
@@ -36,7 +36,7 @@ const langEntries = Object.entries(languages) as [Lang, string][];
             {code === lang ? (
               <span class="lang-current" aria-current="true">{code.toUpperCase()}</span>
             ) : (
-              <a href={langPrefix(code)} hreflang={code} lang={code}>{code.toUpperCase()}</a>
+              <a href={langPrefix(code)} hreflang={code} lang={code} data-umami-event="lang-switch" data-umami-event-lang={code}>{code.toUpperCase()}</a>
             )}
           </>
         ))}

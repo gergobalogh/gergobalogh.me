@@ -22,7 +22,7 @@ const notes = allNotes
         <ul class="notes-list">
           {notes.map(note => (
             <li>
-              <a href={'/hu/jegyzetek/' + note.id} class="note-title">{note.data.title}</a>
+              <a href={'/hu/jegyzetek/' + note.id} class="note-title" data-umami-event="note-click" data-umami-event-slug={note.id}>{note.data.title}</a>
               <p class="note-summary">{note.data.summary}</p>
             </li>
           ))}
@@ -32,7 +32,7 @@ const notes = allNotes
       )}
 
       <div style="margin-top: var(--space-6);">
-        <a href="/hu/" class="btn btn-secondary">{t('backToHome')}</a>
+        <a href="/hu/" class="btn btn-secondary" data-umami-event="back-to-home">{t('backToHome')}</a>
       </div>
     </div>
   </section>

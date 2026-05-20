@@ -1,6 +1,10 @@
 name = "gergobalogh"
 compatibility_date = "2026-05-13"
 
+[env.production.vars]
+PUBLIC_UMAMI_SRC = "https://umami.gbfcj.my/stats.js"
+PUBLIC_UMAMI_WEBSITE_ID = "37474114-25ec-4e92-938c-8b83d9caf4ec"
+
 [[routes]]
 pattern = "gergobalogh.me"
 custom_domain = true

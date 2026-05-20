@@ -44,7 +44,7 @@ const statusClass = 'project-status--ongoing';
 
       <div style="margin-top: var(--space-5);">
         {ctaUrl ? (
-          <a href={ctaUrl} class="btn btn-primary" target={ctaUrl.startsWith('http') ? '_blank' : undefined} rel={ctaUrl.startsWith('http') ? 'noopener' : undefined}>
+          <a href={ctaUrl} class="btn btn-primary" data-umami-event="project-detail-cta" data-umami-event-name="notes-and-experiments" target={ctaUrl.startsWith('http') ? '_blank' : undefined} rel={ctaUrl.startsWith('http') ? 'noopener' : undefined}>
             {cta} →
           </a>
         ) : (
@@ -55,7 +55,7 @@ const statusClass = 'project-status--ongoing';
       </div>
 
       <div style="margin-top: var(--space-6);">
-        <a href={projectsBase} class="btn btn-secondary">{t('backToProjects')}</a>
+        <a href={projectsBase} class="btn btn-secondary" data-umami-event="back-to-projects">{t('backToProjects')}</a>
       </div>
     </div>
   </article>

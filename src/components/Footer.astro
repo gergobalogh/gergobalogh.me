@@ -13,9 +13,9 @@ const t = useTranslations(lang);
   <div class="container footer-inner">
     <span class="footer-name">{t('footerName')}</span>
     <div class="footer-links">
-      <a href="https://github.com/gergobalogh" target="_blank" rel="noopener">{t('github')}</a>
-      <a href="https://ro.linkedin.com/in/gergobalogh" target="_blank" rel="noopener">{t('linkedin')}</a>
-      <a href="mailto:baloghgergo@gmail.com">{t('email')}</a>
+      <a href="https://github.com/gergobalogh" target="_blank" rel="noopener" data-umami-event="footer-social" data-umami-event-platform="github">{t('github')}</a>
+      <a href="https://ro.linkedin.com/in/gergobalogh" target="_blank" rel="noopener" data-umami-event="footer-social" data-umami-event-platform="linkedin">{t('linkedin')}</a>
+      <a href="mailto:baloghgergo@gmail.com" data-umami-event="footer-social" data-umami-event-platform="email">{t('email')}</a>
     </div>
   </div>
 </footer>

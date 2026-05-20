@@ -20,7 +20,7 @@ const projectBase = lang === 'ro' ? '/ro/proiecte/' : lang === 'hu' ? '/hu/proje
       <p class="project-status project-status--live">{t('isthisaiStatus')}</p>
       <p class="project-description">{t('isthisaiDescription')}</p>
       <p class="project-reason">{t('isthisaiReason')}</p>
-      <a href="https://isthisaislop.help" target="_blank" rel="noopener" class="project-cta">{t('isthisaiCta')} →</a>
+      <a href="https://isthisaislop.help" target="_blank" rel="noopener" class="project-cta" data-umami-event="project-cta" data-umami-event-name="isthisai">{t('isthisaiCta')} →</a>
     </div>
 
     <div class="project-block">
@@ -29,14 +29,14 @@ const projectBase = lang === 'ro' ? '/ro/proiecte/' : lang === 'hu' ? '/hu/proje
       <p class="project-description">{t('clujparticipaDescription')}</p>
       <p class="project-reason">{t('clujparticipaReason')}</p>
       <div class="project-qualifier">{t('clujparticipaQualifier')}</div>
-      <a href="https://clujparticipa.digital" target="_blank" rel="noopener" class="project-cta">{t('clujparticipaCta')} →</a>
+      <a href="https://clujparticipa.digital" target="_blank" rel="noopener" class="project-cta" data-umami-event="project-cta" data-umami-event-name="clujparticipa">{t('clujparticipaCta')} →</a>
     </div>
 
     <div class="project-block">
       <h3 class="project-name">{t('notesAndExperimentsName')}</h3>
       <p class="project-status project-status--ongoing">{t('notesAndExperimentsStatus')}</p>
       <p class="project-description">{t('notesAndExperimentsDescription')}</p>
-      <a href={projectBase + 'notes-and-experiments/'} class="project-cta">{t('notesAndExperimentsCta')} →</a>
+      <a href={projectBase + 'notes-and-experiments/'} class="project-cta" data-umami-event="project-cta" data-umami-event-name="notes-and-experiments">{t('notesAndExperimentsCta')} →</a>
     </div>
   </div>
 </section>

@@ -1,0 +1,67 @@
+# Jobs-to-be-Done — gergobalogh.me
+# SSOT for all validated job stories. Every user story in every feature must trace to a job_id here.
+
+jobs:
+  - job_id: JOB-1
+    name: Builders evaluate substance
+    story: "When I'm scanning someone's site to decide if they're worth following, I want to see evidence of real shipped work and honest thinking, so I can decide whether to read more or move on."
+    dimensions:
+      functional: "Find projects that are actually live and notes that say something specific"
+      emotional: "Feel like I found a peer, not a brand"
+      social: "Be able to reference this person's work in conversation without caveats"
+    four_forces:
+      push: "Most personal sites are generic — 'software engineer passionate about X' — and signal nothing"
+      pull: "A site that shows restraint and specificity signals someone worth paying attention to"
+      anxiety: "Will this be another portfolio with no substance behind the headlines?"
+      habit: "Skim the hero, skip to projects, maybe read one note"
+    opportunity_score: 45
+    importance: 9
+    satisfaction: 4
+
+  - job_id: JOB-2
+    name: Collaborators assess civic fit
+    story: "When I'm considering someone for a civic tech project, I want to quickly understand what they've built and how they think about participation, so I can decide whether to reach out."
+    dimensions:
+      functional: "See relevant project work (civic tools, not just dev tools) and understand the design philosophy"
+      emotional: "Feel confidence that this person won't over-promise and under-deliver"
+      social: "Be able to recommend this person to colleagues without hedging"
+    four_forces:
+      push: "Need someone who understands civic context, not just code"
+      pull: "A site that clearly frames what the work is FOR (coalition-building, not voting) signals the right kind of experience"
+      anxiety: "Is this person a technologist who doesn't understand the social layer, or someone who gets both?"
+      habit: "Read About, scan projects, check one note for depth"
+    opportunity_score: 40
+    importance: 8
+    satisfaction: 3
+
+  - job_id: JOB-3
+    name: Visitors get a quick read
+    story: "When I google someone's name, I want a quick, clear picture of who they are and what they do, so I can decide if they're relevant to whatever brought me here."
+    dimensions:
+      functional: "Get a read on this person in under 10 seconds"
+      emotional: "Feel like I learned something, not like I read marketing copy"
+      social: "Be able to describe this person in one sentence to someone else"
+    four_forces:
+      push: "Need information fast, don't want to dig"
+      pull: "A site that respects my time by being direct"
+      anxiety: "Will this be a generic portfolio or will I actually learn something?"
+      habit: "Read the hero, maybe scroll, leave"
+    opportunity_score: 21
+    importance: 7
+    satisfaction: 4
+
+  - job_id: JOB-4
+    name: Project users find the tool
+    story: "When I land here from a project link, I want to find the tool I was looking for without friction, so I can use it or learn more about it."
+    dimensions:
+      functional: "Locate the right project and get to the live product quickly"
+      emotional: "Feel like the project is alive and maintained, not abandoned"
+      social: "Share the project with others confidently"
+    four_forces:
+      push: "Came for a specific tool, don't care about the person yet"
+      pull: "A clear path from landing to the live product"
+      anxiety: "Is this still active?"
+      habit: "Scan for the project name, click the CTA"
+    opportunity_score: 6
+    importance: 6
+    satisfaction: 5

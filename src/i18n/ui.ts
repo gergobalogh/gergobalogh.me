@@ -12,7 +12,7 @@ export const translations = {
   en: {
     // Site
     siteTitle: 'Gergő Balogh',
-    siteDescription: 'Software engineer building playful and civic tools on the internet.',
+    siteDescription: 'Software engineer building civic tools and small internet products that make the web more useful.',
 
     // Nav
     projects: 'Projects',
@@ -21,28 +21,28 @@ export const translations = {
 
     // Hero
     heroHeadline: 'I build playful and civic software.',
-    heroSubhead: 'I make tools that help people see more clearly, take part directly, and act on what they know.',
+    heroSubhead: 'The gap between watching and doing is three moves: see clearly, act on what you know, then participate directly.',
     heroCta: 'See projects',
     heroCtaSecondary: 'Read notes',
 
     // About
     aboutTitle: 'About',
-    aboutBody: "I’m a software engineer in Cluj-Napoca. I work in civic tech, public-interest software, and small internet products. I build for use, not for demonstration.",
+    aboutBody: "I think the internet gives people too much to watch and not enough to do. Software should make people more able, not more impressed. The best tools quietly improve how people interact with the world around them.",
 
     // isthisai
     isthisaiName: 'isthisai',
     isthisaiStatus: 'Live',
-    isthisaiDescription: 'A game about telling the difference. You look at images and videos and judge whether they were made by a person or a machine.',
+    isthisaiDescription: 'Can you tell if an image was made by a human or a machine? You look. You judge. You\'re probably wrong.',
     isthisaiReason: 'AI-generated media is getting harder to spot. This project turns that problem into something interactive, social, and easier to talk about.',
     isthisaiCta: 'Play isthisai',
 
     // clujparticipa
     clujparticipaName: 'clujparticipa',
-    clujparticipaStatus: 'In progress',
-    clujparticipaDescription: 'A participatory budgeting prototype for Cluj-Napoca. Residents submit proposals, build support, and place ideas on a map — a tool for surfacing what residents might want before formal decisions are made.',
+    clujparticipaStatus: 'Taking shape',
+    clujparticipaDescription: 'What does the city want before formal politics decides? Residents propose, build support, and map ideas — a participatory budgeting prototype for Cluj-Napoca.',
     clujparticipaReason: 'Cities need better ways for residents to surface local ideas and build support around them before formal politics takes over.',
     clujparticipaQualifier: 'This is a coalition-building and participation tool, not a production voting system.',
-    clujparticipaCta: 'See clujparticipa',
+    clujparticipaCta: 'Join clujparticipa',
 
     // Civic chatbot
     civicChatbotName: 'Civic chatbot experiment',
@@ -53,12 +53,12 @@ export const translations = {
 
     // Notes and experiments
     notesAndExperimentsName: 'Notes and experiments',
-    notesAndExperimentsStatus: 'Ongoing',
-    notesAndExperimentsDescription: 'Short writing and small experiments about publishing, civic software, internet products, and building in public.',
+    notesAndExperimentsStatus: 'Always shipping',
+    notesAndExperimentsDescription: 'Things learned while making software people can actually use.',
     notesAndExperimentsCta: 'Read notes',
 
     // Notes section
-    notesIntro: 'Working notes on civic software, publishing, and building useful things.',
+    notesIntro: 'Notes on useful software, publishing, and participation on the internet.',
 
     projectsIntro: 'Projects I work on — civic tools, experiments, and small internet products.',
 
@@ -71,7 +71,7 @@ export const translations = {
 
     // Notes index page
     notesPageTitle: 'Notes',
-    notesPageIntro: "Notes on what I'm thinking through — civic software, publishing, and small improvements to how the internet works.",
+    notesPageIntro: 'Notes on software, the internet, and things that could work better.',
 
     // Project pages
     projectStatus: 'Status',
@@ -95,26 +95,26 @@ export const translations = {
     notes: 'Note',
     elsewhere: 'În altă parte',
 
-    heroHeadline: 'Construiesc software ludic și civic.',
-    heroSubhead: 'Fac instrumente care ajută oamenii să vadă mai clar, să participe direct și să acționeze pe baza a ceea ce știu.',
+    heroHeadline: 'Mai puțin spectacol, mai multă acțiune — instrumente civice pentru Cluj.',
+    heroSubhead: 'Diferența dintre «nu e problema mea» și schimbare reală sunt trei pași: înțelege problema, fă ceva concret, participă direct.',
     heroCta: 'Vezi proiectele',
     heroCtaSecondary: 'Citește notele',
 
     aboutTitle: 'Despre',
-    aboutBody: 'Sunt inginer software în Cluj-Napoca. Lucrez în tehnologie civică, software de interes public și produse mici de internet. Construiesc pentru a fi folosit, nu pentru a fi demonstrat.',
+    aboutBody: 'Dacă nu faci nimic, nici că se va schimba ceva. Avem prea mult de urmărit și prea puțin de făcut. Cred că internetul are destul spectacol. Foaie verde băț, vrei un oraș mai bun? Fă-ți — și eu fac la fel.',
 
     isthisaiName: 'isthisai',
-    isthisaiStatus: 'Lansat',
-    isthisaiDescription: 'Un joc despre cum să recunoști diferența. Privești imagini și videoclipuri și judeci dacă au fost create de o persoană sau de o mașină.',
+    isthisaiStatus: 'Live',
+    isthisaiDescription: 'Poți să-ți dai seama dacă o imagine a fost făcută de om sau de AI? Majoritatea oamenilor nimeresc 50% — adică la întâmplare. Probabil n-ai nimerit nici tu.',
     isthisaiReason: 'Conținutul generat de AI devine din ce în ce mai greu de identificat. Acest proiect transformă acea problemă într-un lucru interactiv, social și mai ușor de discutat.',
     isthisaiCta: 'Joacă isthisai',
 
     clujparticipaName: 'clujparticipa',
-    clujparticipaStatus: 'În curs de dezvoltare',
-    clujparticipaDescription: 'Un prototip de bugetare participativă pentru Cluj-Napoca. Rezidenții trimit propuneri, construiesc sprijin și plasează idei pe hartă — un instrument pentru a scoate la suprafață ce ar putea dori orașul înainte ca deciziile formale să fie luate.',
+    clujparticipaStatus: 'Prinde formă',
+    clujparticipaDescription: 'Bugetarea participativă a murit la Cluj — orașul are nevoie de versiunea 2. Cetățenii propun, votul contează, banii se văd — un prototip care reface ce primăria a abandonat.',
     clujparticipaReason: 'Orașele au nevoie de modalități mai bune ca rezidenții să aducă idei locale la suprafață și să construiască sprijin în jurul lor înainte de a prelua politica formală.',
     clujparticipaQualifier: 'Acesta este un instrument de construire a coalițiilor și participare, nu un sistem de votare în producție.',
-    clujparticipaCta: 'Vezi clujparticipa',
+    clujparticipaCta: 'Participă la clujparticipa',
 
     civicChatbotName: 'Experiment chatbot civic',
     civicChatbotStatus: 'Prototip',
@@ -123,11 +123,11 @@ export const translations = {
     civicChatbotCta: 'Citește nota',
 
     notesAndExperimentsName: 'Note și experimente',
-    notesAndExperimentsStatus: 'Continuu',
-    notesAndExperimentsDescription: 'Scurte scrieri și mici experimente despre publicare, software civic, produse de internet și construire în public.',
-    notesAndExperimentsCta: 'Citește notele',
+    notesAndExperimentsStatus: 'Întotdeauna în lucru',
+    notesAndExperimentsDescription: 'Ce iese din uz — ciorne despre cum lucrez.',
+    notesAndExperimentsCta: 'Idei în lucru',
 
-    notesIntro: 'Note de lucru despre software civic, publicare și construirea de lucruri utile.',
+    notesIntro: 'Despre lucruri utile pentru internet și oamenii din jurul lui.',
 
     projectsIntro: 'Proiecte la care lucrez — instrumente civice, experimente și produse mici de internet.',
 
@@ -138,7 +138,7 @@ export const translations = {
     email: 'Email',
 
     notesPageTitle: 'Note',
-    notesPageIntro: 'Note despre ce gândesc — software civic, publicare și mici îmbunătățiri ale modului în care funcționează internetul.',
+    notesPageIntro: 'Despre software, publicare și un internet ceva mai util.',
 
     projectStatus: 'Stare',
     projectWhy: 'De ce există',
@@ -154,32 +154,32 @@ export const translations = {
 
   hu: {
     siteTitle: 'Gergő Balogh',
-    siteDescription: 'Szoftvermérnök, aki játékos és civil eszközöket épít az interneten.',
+    siteDescription: 'Kolozsvári szoftvermérnök vagyok. Egy hasznosabb internetért dolgozom.',
 
     projects: 'Projektek',
     notes: 'Jegyzetek',
     elsewhere: 'Máshol',
 
-    heroHeadline: 'Játékos és civil szoftvereket építek.',
-    heroSubhead: 'Olyan eszközöket készítek, amelyek segítenek az embereknek tisztábban látni, közvetlenül részt venni és hogy tudásukra alapozva cselekedhessenek.',
+    heroHeadline: 'Nem elég látni, ami rossz. A város több, ha részt veszel benne.',
+    heroSubhead: 'Tájékozódj. Szállj be. Cselekedj.',
     heroCta: 'Projektek megtekintése',
     heroCtaSecondary: 'Jegyzetek olvasása',
 
     aboutTitle: 'Rólam',
-    aboutBody: 'Kolozsvári szoftvermérnök vagyok. Civil technológiával, közérdekű szoftverekkel és kis internetes termékekkel foglalkozom. Használatra építek, nem bemutatóra.',
+    aboutBody: 'Majd megcsináljuk. Majd lesz jobb. Majd valaki megoldja. Nem. Hatalmasak ezek az applikációk — betöltik az egész képernyőt. Kinek taps kell, csináljon műsort. Kinek internete, görgessen. Kinek dolga van, dolgozzon. A látvány elfárad. A görgetés elszáll. A munka megmarad.',
 
     isthisaiName: 'isthisai',
-    isthisaiStatus: 'Élő',
-    isthisaiDescription: 'Egy játék a különbségtételről. Képeket és videókat nézel, és eldöntöd, hogy ember vagy gép készítette-e.',
+    isthisaiStatus: 'Él',
+    isthisaiDescription: 'Igazi vagy AI? A legtöbb ember 50%-ot talál. Te is inkább csak tippelsz.',
     isthisaiReason: 'Az AI által generált média egyre nehezebben felismerhető. Ez a projekt interaktívvá és társaságivá teszi a kérdést, és segít elindítani a párbeszédet erről a problémáról.',
     isthisaiCta: 'Játssz az isthisai-val',
 
     clujparticipaName: 'clujparticipa',
-    clujparticipaStatus: 'Folyamatban',
-    clujparticipaDescription: 'Egy részvételi költségvetési prototípus Kolozsvár számára. A lakosok javaslatokat nyújtanak be, támogatást építenek és ötleteket helyeznek el a térképen — egy eszköz arra, hogy felszínre hozzák, mit szeretne a város, mielőtt a formális döntések megszületnének.',
+    clujparticipaStatus: 'Formálódik',
+    clujparticipaDescription: 'A város dönt, mielőtt kérdezne. Mi lenne, ha megfordítanánk? Javaslatok, támogatás, ötletek a térképen. Részvételi költségvetést Kolozsvárnak.',
     clujparticipaReason: 'A városoknak jobb módokra van szükségük, hogy a lakosok felszínre hozhassák helyi ötleteiket, és támogatást építsenek köréjük, mielőtt a formális politika átveszi az irányítást.',
     clujparticipaQualifier: 'Ez egy koalícióépítő és részvételi eszköz, nem egy éles szavazási rendszer.',
-    clujparticipaCta: 'Tovább a projekthez',
+    clujparticipaCta: 'Csatlakozz a clujparticipához',
 
     civicChatbotName: 'Polgári chatbot kísérlet',
     civicChatbotStatus: 'Prototípus',
@@ -188,11 +188,11 @@ export const translations = {
     civicChatbotCta: 'Olvassa el a jegyzetet',
 
     notesAndExperimentsName: 'Jegyzetek és kísérletek',
-    notesAndExperimentsStatus: 'Folyamatos',
-    notesAndExperimentsDescription: 'Rövid írások és kis kísérletek a publikálásról, civil szoftverekről, internetes termékekről és a nyilvános építésről.',
+    notesAndExperimentsStatus: 'Folyamatosan frissül',
+    notesAndExperimentsDescription: 'Tanulságok arról, hogyan készül olyan szoftver, amit az emberek tényleg használnak.',
     notesAndExperimentsCta: 'Jegyzetek olvasása',
 
-    notesIntro: 'Munkajegyzetek civil szoftverekről, publikálásról és hasznos dolgok építéséről.',
+    notesIntro: 'Hasznos dolgokról az interneten és azon kívül.',
 
     projectsIntro: 'Projektek, amelyeken dolgozom — polgári eszközök, kísérletek és kis internetes termékek.',
 
@@ -203,7 +203,7 @@ export const translations = {
     email: 'Email',
 
     notesPageTitle: 'Jegyzetek',
-    notesPageIntro: 'Jegyzetek arról, amin gondolkodom — civil szoftverek, publikálás és az internet kis javításai.',
+    notesPageIntro: 'Gondolatok erről, arról és egy hasznosabb internetről.',
     notesComingSoon: 'Jegyzetek hamarosan.',
 
     projectStatus: 'Státusz',

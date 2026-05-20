@@ -17,8 +17,8 @@ const notesPath = lang === 'ro' ? '/ro/notite/' : lang === 'hu' ? '/hu/jegyzetek
       <h1 class="hero-headline">{t('heroHeadline')}</h1>
       <p class="hero-subhead">{t('heroSubhead')}</p>
       <div class="btn-group">
-        <a href="#projects" class="btn btn-primary">{t('heroCta')}</a>
-        <a href={notesPath} class="btn btn-secondary">{t('heroCtaSecondary')}</a>
+        <a href="#projects" class="btn btn-primary" data-umami-event="hero-cta-primary">{t('heroCta')}</a>
+        <a href={notesPath} class="btn btn-secondary" data-umami-event="hero-cta-secondary">{t('heroCtaSecondary')}</a>
       </div>
     </div>
     <div class="hero-portrait">

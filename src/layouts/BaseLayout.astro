@@ -15,6 +15,9 @@ const t = useTranslations(lang);
 
 const pageTitle = title || t('siteTitle');
 const pageDescription = description || t('siteDescription');
+
+const umamiSrc = import.meta.env.PUBLIC_UMAMI_SRC;
+const umamiWebsiteId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
 ---
 
 <!DOCTYPE html>
@@ -32,7 +35,9 @@ const pageDescription = description || t('siteDescription');
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script is:inline async defer src="https://umami.gbfcj.my/stats.js" data-website-id="37474114-25ec-4e92-938c-8b83d9caf4ec"></script>
+  {umamiSrc && umamiWebsiteId && (
+    <script is:inline async defer src={umamiSrc} data-website-id={umamiWebsiteId}></script>
+  )}
 </head>
 <body>
   <TopBar lang={lang} />
