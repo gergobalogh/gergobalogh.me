@@ -3,40 +3,82 @@ import { type Lang, useTranslations } from '../i18n/ui';
 
 interface Props {
   lang: Lang;
+  variant?: 'featured' | 'index';
 }
 
-const { lang } = Astro.props;
+const { lang, variant = 'featured' } = Astro.props;
 const t = useTranslations(lang);
 
 const projectBase = lang === 'ro' ? '/ro/proiecte/' : lang === 'hu' ? '/hu/projektek/' : '/projects/';
+
+const projects = [
+  {
+    key: 'isthisai',
+    name: t('isthisaiName'),
+    status: t('isthisaiStatus'),
+    statusClass: 'project-status--live',
+    description: t('isthisaiDescription'),
+    reason: t('isthisaiReason'),
+    qualifier: '',
+    href: 'https://isthisaislop.help',
+    external: true,
+    cta: t('isthisaiCta'),
+  },
+  {
+    key: 'clujparticipa',
+    name: t('clujparticipaName'),
+    status: t('clujparticipaStatus'),
+    statusClass: 'project-status--progress',
+    description: t('clujparticipaDescription'),
+    reason: t('clujparticipaReason'),
+    qualifier: t('clujparticipaQualifier'),
+    href: 'https://clujparticipa.digital',
+    external: true,
+    cta: t('clujparticipaCta'),
+  },
+  {
+    key: 'civic-chatbot',
+    name: t('civicChatbotName'),
+    status: t('civicChatbotStatus'),
+    statusClass: 'project-status--progress',
+    description: t('civicChatbotDescription'),
+    reason: t('civicChatbotReason'),
+    qualifier: '',
+    href: projectBase + 'civic-chatbot-experiment/',
+    external: false,
+    cta: t('civicChatbotCta'),
+  },
+];
+
+const visibleProjects = variant === 'featured'
+  ? projects.filter(project => project.key !== 'civic-chatbot')
+  : projects;
 ---
 
 <section id="projects" class="section fade-in fade-in-delay-2">
   <div class="container">
     <span class="section-label">{t('projects')}</span>
+    {variant === 'index' && <h1 class="section-title">{t('projects')}</h1>}
+    {variant === 'index' && <p class="section-intro">{t('projectsIntro')}</p>}
 
-    <div class="project-block">
-      <h3 class="project-name">{t('isthisaiName')}</h3>
-      <p class="project-status project-status--live">{t('isthisaiStatus')}</p>
-      <p class="project-description">{t('isthisaiDescription')}</p>
-      <p class="project-reason">{t('isthisaiReason')}</p>
-      <a href="https://isthisaislop.help" target="_blank" rel="noopener" class="project-cta" data-umami-event="project-cta" data-umami-event-name="isthisai">{t('isthisaiCta')} →</a>
-    </div>
-
-    <div class="project-block">
-      <h3 class="project-name">{t('clujparticipaName')}</h3>
-      <p class="project-status project-status--progress">{t('clujparticipaStatus')}</p>
-      <p class="project-description">{t('clujparticipaDescription')}</p>
-      <p class="project-reason">{t('clujparticipaReason')}</p>
-      <div class="project-qualifier">{t('clujparticipaQualifier')}</div>
-      <a href="https://clujparticipa.digital" target="_blank" rel="noopener" class="project-cta" data-umami-event="project-cta" data-umami-event-name="clujparticipa">{t('clujparticipaCta')} →</a>
-    </div>
-
-    <div class="project-block">
-      <h3 class="project-name">{t('notesAndExperimentsName')}</h3>
-      <p class="project-status project-status--ongoing">{t('notesAndExperimentsStatus')}</p>
-      <p class="project-description">{t('notesAndExperimentsDescription')}</p>
-      <a href={projectBase + 'notes-and-experiments/'} class="project-cta" data-umami-event="project-cta" data-umami-event-name="notes-and-experiments">{t('notesAndExperimentsCta')} →</a>
-    </div>
+    {visibleProjects.map(project => (
+      <div class="project-block">
+        <h3 class="project-name">{project.name}</h3>
+        <p class:list={['project-status', project.statusClass]}>{project.status}</p>
+        <p class="project-description">{project.description}</p>
+        {project.reason && <p class="project-reason">{project.reason}</p>}
+        {project.qualifier && <div class="project-qualifier">{project.qualifier}</div>}
+        <a
+          href={project.href}
+          target={project.external ? '_blank' : undefined}
+          rel={project.external ? 'noopener' : undefined}
+          class="project-cta"
+          data-umami-event="project-cta"
+          data-umami-event-name={project.key}
+        >
+          {project.cta} ->
+        </a>
+      </div>
+    ))}
   </div>
 </section>

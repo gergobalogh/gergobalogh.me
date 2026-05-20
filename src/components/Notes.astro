@@ -4,15 +4,17 @@ import { getCollection } from 'astro:content';
 
 interface Props {
   lang: Lang;
+  limit?: number;
 }
 
-const { lang } = Astro.props;
+const { lang, limit } = Astro.props;
 const t = useTranslations(lang);
 
 const allNotes = await getCollection('notes');
 const notes = allNotes
   .filter(n => n.data.lang === lang)
-  .sort((a, b) => (a.data.date > b.data.date ? -1 : 1));
+  .sort((a, b) => (a.data.date > b.data.date ? -1 : 1))
+  .slice(0, limit);
 
 const notesBase = lang === 'ro' ? '/ro/notite/' : lang === 'hu' ? '/hu/jegyzetek/' : '/notes/';
 ---

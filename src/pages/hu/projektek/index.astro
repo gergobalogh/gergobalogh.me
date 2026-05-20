@@ -7,10 +7,6 @@ const lang = 'hu';
 const t = useTranslations(lang);
 ---
 
-<BaseLayout lang={lang} title={t('projects') + ' — ' + t('siteTitle')} description={t('projectsIntro')}>
-  <section class="section">
-    <div class="container">
-      <Projects lang={lang} />
-    </div>
-  </section>
+<BaseLayout lang={lang} title={t('projects') + ' - ' + t('siteTitle')} description={t('projectsIntro')}>
+  <Projects lang={lang} variant="index" />
 </BaseLayout>

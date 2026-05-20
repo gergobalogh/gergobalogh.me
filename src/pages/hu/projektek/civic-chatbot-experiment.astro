@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { type Lang, useTranslations } from '../../../i18n/ui';
+
+const lang: Lang = 'hu';
+const t = useTranslations(lang);
+
+const title = t('civicChatbotName');
+const status = t('civicChatbotStatus');
+const description = t('civicChatbotDescription');
+const reason = t('civicChatbotReason');
+const cta = t('civicChatbotCta');
+const ctaUrl = lang === 'en' ? '/notes/civic-chatbot-experiment/' : '';
+
+const projectsBase = '/hu/projektek/';
+const statusClass = 'project-status--progress';
+---
+
+<BaseLayout lang={lang} title={title + ' - ' + t('siteTitle')} description={description}>
+  <article class="note-detail">
+    <div class="container">
+      <h1>{title}</h1>
+      <p class:list={['project-status', statusClass]}>
+        {t('projectStatus')}: {status}
+      </p>
+
+      <div class="prose" style="margin-top: var(--space-5);">
+        <p style="font-size: var(--step-1);">{description}</p>
+
+        {reason && (
+          <div style="margin-top: var(--space-5);">
+            <h2>{t('projectWhy')}</h2>
+            <p>{reason}</p>
+          </div>
+        )}
+      </div>
+
+      {ctaUrl && (
+        <div style="margin-top: var(--space-5);">
+          <a href={ctaUrl} class="btn btn-primary" data-umami-event="project-detail-cta" data-umami-event-name="civic-chatbot">
+            {cta} ->
+          </a>
+        </div>
+      )}
+
+      <div style="margin-top: var(--space-6);">
+        <a href={projectsBase} class="btn btn-secondary" data-umami-event="back-to-projects">{t('backToProjects')}</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
