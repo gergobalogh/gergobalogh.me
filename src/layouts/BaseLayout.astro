@@ -8,9 +8,11 @@ interface Props {
   lang: Lang;
   title?: string;
   description?: string;
+  image?: string;
 }
 
-const { lang, title, description } = Astro.props;
+const { lang, title, description, image } = Astro.props;
+const imageUrl = image ? new URL(image, Astro.site ?? Astro.url).toString() : undefined;
 const t = useTranslations(lang);
 
 const pageTitle = title || t('siteTitle');
@@ -30,6 +32,9 @@ const umamiWebsiteId = '37474114-25ec-4e92-938c-8b83d9caf4ec';
   <meta property="og:title" content={pageTitle} />
   <meta property="og:description" content={pageDescription} />
   <meta property="og:type" content="website" />
+  {imageUrl && <meta property="og:image" content={imageUrl} />}
+  {imageUrl && <meta name="twitter:card" content="summary_large_image" />}
+  {imageUrl && <meta name="twitter:image" content={imageUrl} />}
   <meta property="og:locale" content={lang === 'en' ? 'en_US' : lang === 'ro' ? 'ro_RO' : 'hu_HU'} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />

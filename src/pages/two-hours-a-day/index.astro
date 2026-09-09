@@ -1,0 +1,915 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { type Lang, useTranslations } from '../../i18n/ui';
+
+const lang: Lang = 'en';
+const t = useTranslations(lang);
+
+/* ---- The arithmetic. One source of truth for every figure on this page. ---- */
+const YEAR = 365.2425;           // Gregorian mean year
+const MONTH = YEAR / 12;         // 30.436875 days
+const WAKING = 16;               // waking hours in a day
+const CAREER = 50;               // years, for the "over a working life" figure
+
+const daysPerYear = (h: number) => (h * YEAR) / 24;
+const monthsPerYear = (h: number) => daysPerYear(h) / MONTH;
+const wakingDaysPerYear = (h: number) => (h * YEAR) / WAKING;
+const yearsPerCareer = (h: number) => (h * YEAR * CAREER) / 24 / YEAR;
+
+const d1 = (n: number) => n.toFixed(1);
+const d2 = (n: number) => n.toFixed(2);
+
+const HOUR = 1 / 60;
+const presets = [
+  { hours: 1, label: '1 hour', note: 'A single hour' },
+  { hours: 2, label: '2 hours', note: 'The claim on this page' },
+  { hours: 2 + 39 * HOUR, label: '2h 39m', note: 'Social and video feeds, global average' },
+  { hours: 4, label: '4 hours', note: 'Four hours' },
+  { hours: 4 + 37 * HOUR, label: '4h 37m', note: 'Phone, all apps, global average' },
+  { hours: 6 + 45 * HOUR, label: '6h 45m', note: 'All screens, all devices' },
+];
+
+const AXIS_MAX = 8;
+const axisDays = daysPerYear(AXIS_MAX);
+
+/* Ring geometry: two concentric 12-segment rings sharing a centre. */
+const ring = (r: number, gap: number) => {
+  const c = 2 * Math.PI * r;
+  const dash = c / 12 - gap;
+  return { r, c, dash, gap, rest: c - (c / 12 - gap) };
+};
+const outer = ring(104, 7);
+const inner = ring(66, 7);
+
+const title = 'Two hours a day is a month a year';
+const description =
+  'Two hours a day adds up to 30.4 days a year — one whole month, exactly. Not a rounded figure: a month is 1/12 of a year, and two hours is 1/12 of a day. Drag the slider to see your own number.';
+---
+
+<BaseLayout lang={lang} title={title + ' — ' + t('siteTitle')} description={description} image="/two-hours-a-day.png">
+  <!-- ===================== 1. Hero ===================== -->
+  <section class="section th-hero">
+    <div class="container th-hero-inner">
+      <div class="th-hero-copy">
+        <span class="section-label">An arithmetic</span>
+        <h1>Two hours a day<br />is a month a year.</h1>
+        <p class="th-deck">
+          Not approximately a month. <strong>Exactly</strong> one — the two figures match to six
+          decimal places. There is a reason, and it takes about ten seconds to see.
+        </p>
+      </div>
+
+      <figure class="th-rings">
+        <svg viewBox="0 0 260 260" role="img" aria-label="Two concentric rings, each divided into twelve segments. One segment of each is filled.">
+          <g transform="rotate(-90 130 130)" fill="none" stroke-linecap="butt">
+            <circle class="th-ring-track" cx="130" cy="130" r={outer.r} stroke-width="26" stroke-dasharray={`${outer.dash} ${outer.gap}`} />
+            <circle class="th-ring-fill"  cx="130" cy="130" r={outer.r} stroke-width="26" stroke-dasharray={`${outer.dash} ${outer.rest}`} />
+            <circle class="th-ring-track" cx="130" cy="130" r={inner.r} stroke-width="26" stroke-dasharray={`${inner.dash} ${inner.gap}`} />
+            <circle class="th-ring-fill"  cx="130" cy="130" r={inner.r} stroke-width="26" stroke-dasharray={`${inner.dash} ${inner.rest}`} />
+          </g>
+        </svg>
+        <figcaption>
+          <strong>Outer ring:</strong> the year&rsquo;s twelve months.
+          <strong>Inner:</strong> the day&rsquo;s twelve two-hour blocks.
+          The same wedge, filled twice.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== 2. Why it's exact ===================== -->
+  <section class="section th-proof">
+    <div class="container">
+      <div class="narrow">
+        <span class="section-label">Why it is exact, not close</span>
+        <h2>You are not comparing hours to months. You are comparing one fraction to itself.</h2>
+        <p>
+          A month is a twelfth of a year. Two hours is a twelfth of a day. Spend a twelfth of every
+          day and you have spent a twelfth of the year.
+        </p>
+      </div>
+
+      <div class="th-fractions narrow">
+        <div class="th-fraction">
+          <p class="th-fraction-label">One day, cut into twelve two-hour blocks</p>
+          <div class="th-twelve" role="img" aria-label="A day divided into twelve blocks, one filled">
+            {Array.from({ length: 12 }, (_, i) => <span class={i === 0 ? 'is-filled' : ''}></span>)}
+          </div>
+          <p class="th-fraction-foot">2 hours of 24 &mdash; one twelfth</p>
+        </div>
+        <div class="th-fraction">
+          <p class="th-fraction-label">One year, cut into twelve months</p>
+          <div class="th-twelve" role="img" aria-label="A year divided into twelve months, one filled">
+            {Array.from({ length: 12 }, (_, i) => <span class={i === 0 ? 'is-filled' : ''}></span>)}
+          </div>
+          <p class="th-fraction-foot">1 month of 12 &mdash; one twelfth</p>
+        </div>
+      </div>
+
+      <div class="narrow">
+        <div class="th-derivation">
+          <div><span>2 h/day &times; 365.2425 days</span><b>= 730.485 h</b></div>
+          <div><span>730.485 h &divide; 24</span><b>= 30.436875 days</b></div>
+          <div><span>one average month = 365.2425 &divide; 12</span><b>= 30.436875 days</b></div>
+        </div>
+        <p class="th-derivation-note">The same number, reached two ways.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 3. The interactive ===================== -->
+  <section class="section th-calc-section">
+    <div class="container">
+      <div class="narrow">
+        <span class="section-label">Your number</span>
+        <h2>So how much is yours?</h2>
+        <p>
+          Set the hours you spend on one habit each day.
+        </p>
+      </div>
+    </div>
+
+    <noscript>
+      <div class="container">
+        <div class="narrow">
+          <p class="th-qualifier">
+            The slider needs JavaScript. The full table of figures is further down the page, and it
+            contains every number the slider would have shown you.
+          </p>
+        </div>
+      </div>
+    </noscript>
+
+    <div class="th-calc" hidden>
+      <div class="container">
+        <div class="th-controls">
+          <label class="th-slider-wrap" for="th-hours">
+            <span class="th-slider-label">Hours a day</span>
+            <input
+              type="range" id="th-hours" name="th-hours"
+              min="0" max="480" step="1" value="120"
+              aria-valuetext="2 hours a day"
+            />
+          </label>
+          <div class="th-presets" role="group" aria-label="Common daily figures">
+            {presets.map((p) => (
+              <button type="button" class="th-chip" data-hours={p.hours} aria-pressed={p.hours === 2 ? 'true' : 'false'} data-umami-event={'two-hours-preset-' + p.label}>
+                {p.label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div class="th-readout" aria-live="polite" aria-atomic="true">
+          <p class="th-readout-lead">
+            <span data-th="hoursText">2 hours</span> a day, every day, comes to
+          </p>
+          <p class="th-hero-figure"><span data-th="days">30.4</span> <span class="th-hero-unit">days a year</span></p>
+          <dl class="th-stats">
+            <div><dt>Calendar months</dt><dd data-th="months">1.00</dd></div>
+            <div><dt>Waking days<span class="th-fn">of 16 waking hours</span></dt><dd data-th="wakingDays">45.7</dd></div>
+            <div><dt>Over 50 years<span class="th-fn">whole years, day and night</span></dt><dd data-th="careerYears">4.2</dd></div>
+          </dl>
+        </div>
+
+        <div class="th-grid-block">
+          <div class="th-modes" role="group" aria-label="How to show the time">
+            <button type="button" class="th-mode" data-mode="daily" aria-pressed="true">Every day</button>
+            <button type="button" class="th-mode" data-mode="stacked" aria-pressed="false">Stacked up</button>
+          </div>
+
+          <div
+            class="th-year-grid" id="th-grid" data-mode="daily"
+            role="img"
+            aria-label="A year of 365 days. Each day is shaded by one twelfth, for two hours a day."
+          >
+            {Array.from({ length: 365 }, () => <span class="th-cell"><i></i></span>)}
+          </div>
+
+          <p class="th-grid-caption" data-th="caption">
+            Two hours taken out of every one of the 365 days.
+          </p>
+          <p class="th-grid-sub">Same ink, rearranged.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 4. Comparison bars ===================== -->
+  <section class="section th-bars-section">
+    <div class="container">
+      <div class="narrow">
+        <span class="section-label">For scale</span>
+        <h2>How long is everyone else&rsquo;s month?</h2>
+        <p>
+          Days per year, at each daily rate. Yours moves with the slider.
+        </p>
+      </div>
+
+      <div class="th-bars">
+        <div class="th-bar-row is-you" tabindex="0">
+          <span class="th-bar-label">Your setting<span class="th-bar-note" data-th="youNote">2 hours a day</span></span>
+          <span class="th-bar-track"><span class="th-bar-fill" data-th="youBar" style={`width:${(daysPerYear(2) / axisDays) * 100}%`}></span></span>
+          <span class="th-bar-value"><b data-th="youValue">{d1(daysPerYear(2))}</b> days</span>
+          <span class="th-bar-tip" data-th="youTip">{d2(monthsPerYear(2))} months &middot; {d1(wakingDaysPerYear(2))} waking days</span>
+        </div>
+
+        {presets.map((p) => (
+          <div class="th-bar-row" tabindex="0">
+            <span class="th-bar-label">{p.label}<span class="th-bar-note">{p.note}</span></span>
+            <span class="th-bar-track"><span class="th-bar-fill" style={`width:${(daysPerYear(p.hours) / axisDays) * 100}%`}></span></span>
+            <span class="th-bar-value"><b>{d1(daysPerYear(p.hours))}</b> days</span>
+            <span class="th-bar-tip">{d2(monthsPerYear(p.hours))} months &middot; {d1(wakingDaysPerYear(p.hours))} waking days</span>
+          </div>
+        ))}
+
+        <div class="th-bars-axis"><span>0</span><span>{d1(axisDays)} days a year</span></div>
+      </div>
+
+      <details class="th-table">
+        <summary>See every number as a table</summary>
+        <div class="th-table-scroll">
+          <table>
+            <caption>Time spent per year at a given daily rate. A waking day is 16 hours.</caption>
+            <thead>
+              <tr>
+                <th scope="col">Per day</th>
+                <th scope="col">Hours a year</th>
+                <th scope="col">Days a year</th>
+                <th scope="col">Months a year</th>
+                <th scope="col">Waking days</th>
+                <th scope="col">Years per 50</th>
+              </tr>
+            </thead>
+            <tbody>
+              {presets.map((p) => (
+                <tr class={p.hours === 2 ? 'is-key' : ''}>
+                  <th scope="row">{p.label}{p.note && p.hours !== 2 && p.hours !== 1 && p.hours !== 4 ? <span class="th-fn">{p.note}</span> : null}</th>
+                  <td>{Math.round(p.hours * YEAR)}</td>
+                  <td>{d1(daysPerYear(p.hours))}</td>
+                  <td>{d2(monthsPerYear(p.hours))}</td>
+                  <td>{d1(wakingDaysPerYear(p.hours))}</td>
+                  <td>{d2(yearsPerCareer(p.hours))}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===================== 5. The honest caveat ===================== -->
+  <section class="section th-caveat">
+    <div class="container">
+      <div class="narrow">
+        <span class="section-label">What it leaves out</span>
+        <h2>The arithmetic is exact. That is its only virtue.</h2>
+        <p>
+          <strong>A calendar month includes the sleeping. Your two hours did not</strong> &mdash; you
+          were awake for all 730 of them. Measured against waking time, two hours a day is
+          <strong>{d1(wakingDaysPerYear(2))} waking days</strong>: a month and a half of conscious
+          life. The honest number is worse than the headline.
+        </p>
+        <p>
+          <strong>Duration is not value.</strong> Two hours of reading, two hours with a friend and two
+          hours of feeds are the same {d1(daysPerYear(2))} days. This page only says how much there
+          was. Whether it was worth it is a better question.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 6. Essay ===================== -->
+  <section class="section th-essay">
+    <div class="container">
+      <div class="narrow">
+        <h2>Over a working life</h2>
+        <p>
+          A year is easy to shrug off. Fifty years of the same habit is harder:
+        </p>
+        <div class="th-tiles">
+          <div class="th-tile"><b>{d1(yearsPerCareer(1))}</b><span>years, at 1 hour a day</span></div>
+          <div class="th-tile is-key"><b>{d1(yearsPerCareer(2))}</b><span>years, at 2 hours a day</span></div>
+          <div class="th-tile"><b>{d1(yearsPerCareer(4 + 37 * HOUR))}</b><span>years, at 4h 37m a day</span></div>
+        </div>
+        <p class="th-tiles-note">
+          Whole years, counted day and night.
+        </p>
+
+        <h2>How to check your own</h2>
+        <p>
+          Open <strong>Settings &rarr; Screen Time</strong> on iOS, or
+          <strong>Digital Wellbeing</strong> on Android. The daily average will be higher than you
+          expect; that is the normal result, not a personal failing.
+        </p>
+        <p class="th-takeaway">One hour a day is 15.2 days a year.</p>
+        <p>
+          Multiply your daily hours by 15.2 and you have your days. No app required, and no need to
+          trust anyone else&rsquo;s figures &mdash; including these.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== 7. Method ===================== -->
+  <section class="section th-method">
+    <div class="container">
+      <div class="narrow">
+        <details>
+          <summary>Method, constants and sources</summary>
+          <div class="th-method-body">
+            <p>
+              A year is taken as <strong>365.2425 days</strong>, the Gregorian mean year &mdash; the
+              average length once leap years are accounted for. That choice is what makes the identity
+              exact rather than approximate: an average month is 365.2425 &divide; 12 = 30.436875 days,
+              and two hours a day for a year is 365.2425 &times; 2 &divide; 24 = 30.436875 days. Using a
+              flat 365-day year instead changes the result by about half an hour.
+            </p>
+            <p>
+              A <strong>waking day</strong> is 16 hours, assuming 8 hours of sleep. The
+              <strong>50-year</strong> figures assume the habit is held at the same rate throughout,
+              which no real habit is; read them as the shape of the compounding, not a forecast.
+            </p>
+            <p>
+              Social and video feed time, 18h 36m per week, and online media time, 33h 13m per week:
+              DataReportal, <em>Digital 2026 Mid-Year Global Update</em> &mdash;
+              <a href="https://datareportal.com/global-digital-overview" target="_blank" rel="noopener">datareportal.com/global-digital-overview</a>.
+              The phone (4h 37m) and all-screens (6h 45m) daily figures are aggregate panel and
+              self-reported estimates that vary by source and by year; they are included as rough
+              reference points, not measurements.
+            </p>
+            <p>
+              Everything on this page is computed in your browser from the number on the slider.
+              Nothing you set is recorded or sent anywhere.
+            </p>
+          </div>
+        </details>
+
+        <div class="th-back">
+          <a href="/projects/" class="btn btn-secondary">{t('backToProjects')}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* Page-scoped palette. One hue, light -> dark (sequential), built from site tokens.
+     Never accent-vs-muted: those two sit at normal-vision dE 14.5 and are hard to tell apart. */
+  .th-hero, .th-proof, .th-calc-section, .th-bars-section,
+  .th-caveat, .th-essay, .th-method {
+    --th-track: var(--surface-2);   /* #e6e5e0 unspent */
+    --th-fill: var(--accent);       /* #1a4535 spent, ~8.5:1 against the track */
+    --th-soft: #8fa89a;             /* mid step of the accent hue, for context bars */
+  }
+
+  /* Tabular figures everywhere a number can change or needs to line up. */
+  .th-hero-figure, .th-stats dd, .th-derivation b, .th-bar-value,
+  .th-table td, .th-tile b, .th-bars-axis {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  /* ---------- Hero ---------- */
+  .th-hero { padding-block: var(--space-7) var(--space-6); }
+  .th-hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: var(--space-7);
+    align-items: center;
+  }
+  .th-hero h1 { margin-block: var(--space-2) var(--space-4); }
+  .th-deck { font-size: var(--step-1); color: var(--muted); max-width: 54ch; }
+  .th-deck strong { color: var(--text); }
+
+  .th-rings { margin: 0; }
+  .th-rings svg { width: 100%; max-width: 320px; margin-inline: auto; display: block; }
+  .th-ring-track { stroke: var(--th-track); }
+  .th-ring-fill { stroke: var(--th-fill); }
+  .th-rings figcaption {
+    margin-top: var(--space-3);
+    font-size: var(--step--1);
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 34ch;
+    margin-inline: auto;
+  }
+  .th-rings figcaption strong { color: var(--text); font-weight: 600; }
+
+  /* ---------- Why it is exact ---------- */
+  .th-proof h2 { margin-bottom: var(--space-3); }
+  .th-fractions {
+    display: grid;
+    gap: var(--space-5);
+    margin-block: var(--space-6);
+  }
+  .th-fraction-label {
+    font-size: var(--step--1);
+    color: var(--muted);
+    margin-bottom: var(--space-2);
+  }
+  .th-twelve { display: grid; grid-template-columns: repeat(12, 1fr); gap: 3px; }
+  .th-twelve span {
+    height: 44px;
+    background: var(--th-track);
+    border-radius: 2px;
+  }
+  .th-twelve span.is-filled { background: var(--th-fill); }
+  .th-fraction-foot {
+    margin-top: var(--space-2);
+    font-size: var(--step--1);
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .th-derivation {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding-block: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+  .th-derivation div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding-block: var(--space-2);
+    font-size: var(--step--1);
+  }
+  .th-derivation div + div { border-top: 1px solid var(--line); }
+  .th-derivation span { color: var(--muted); }
+  .th-derivation b { color: var(--text); }
+  .th-derivation div:last-child b { color: var(--th-fill); }
+  .th-derivation-note { font-size: var(--step--1); color: var(--muted); }
+
+  /* ---------- The interactive ---------- */
+  .th-calc { margin-top: var(--space-5); }
+  .th-controls {
+    display: grid;
+    gap: var(--space-4);
+    padding-bottom: var(--space-5);
+    border-bottom: 1px solid var(--line);
+  }
+  .th-slider-wrap { display: block; }
+  .th-slider-label {
+    display: block;
+    font-size: var(--step--1);
+    color: var(--muted);
+    margin-bottom: var(--space-2);
+  }
+  .th-calc input[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    background: transparent;
+    height: 44px;               /* tap target */
+    cursor: pointer;
+    display: block;
+  }
+  .th-calc input[type='range']::-webkit-slider-runnable-track {
+    height: 6px; border-radius: 3px; background: var(--th-track);
+  }
+  .th-calc input[type='range']::-moz-range-track {
+    height: 6px; border-radius: 3px; background: var(--th-track);
+  }
+  .th-calc input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: 26px; height: 26px; margin-top: -10px;
+    border-radius: 50%; background: var(--th-fill);
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--th-fill);
+  }
+  .th-calc input[type='range']::-moz-range-thumb {
+    width: 26px; height: 26px;
+    border-radius: 50%; background: var(--th-fill);
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 0 1px var(--th-fill);
+  }
+  .th-calc input[type='range']:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: var(--radius);
+  }
+
+  .th-presets { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .th-chip {
+    font: inherit;
+    font-size: var(--step--1);
+    font-weight: 600;
+    min-height: 44px;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  }
+  .th-chip:hover { border-color: var(--accent); }
+  .th-chip[aria-pressed='true'] {
+    background: var(--accent); color: var(--bg); border-color: var(--accent);
+  }
+  .th-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  .th-readout { padding-block: var(--space-5); }
+  .th-readout-lead { font-size: var(--step-1); color: var(--muted); max-width: none; }
+  .th-hero-figure {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(3.5rem, 11vw, 7rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--th-fill);
+    margin-block: var(--space-2) var(--space-4);
+    max-width: none;
+  }
+  .th-hero-unit {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: var(--step-2);
+    font-weight: 600;
+    letter-spacing: 0;
+    color: var(--text);
+  }
+  .th-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: var(--space-4);
+    border-top: 1px solid var(--line);
+    padding-top: var(--space-4);
+  }
+  .th-stats dt { font-size: var(--step--1); color: var(--muted); }
+  .th-stats dd {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: var(--step-2);
+    font-weight: 600;
+    color: var(--text);
+    margin-top: 0.15em;
+  }
+  .th-fn { display: block; font-size: 0.8em; opacity: 0.75; }
+
+  /* ---------- The year grid ---------- */
+  .th-grid-block { padding-top: var(--space-5); border-top: 1px solid var(--line); }
+  .th-modes { display: flex; gap: 0; margin-bottom: var(--space-4); }
+  .th-mode {
+    font: inherit;
+    font-size: var(--step--1);
+    font-weight: 600;
+    min-height: 44px;
+    padding: var(--space-2) var(--space-4);
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  .th-mode:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+  .th-mode:last-child { border-radius: 0 var(--radius) var(--radius) 0; margin-left: -1px; }
+  .th-mode[aria-pressed='true'] {
+    background: var(--accent); color: var(--bg); border-color: var(--accent);
+    position: relative; z-index: 1;
+  }
+  .th-mode:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; z-index: 2; }
+
+  .th-year-grid {
+    --th-fill-pct: 8.3333%;
+    display: grid;
+    grid-template-rows: repeat(7, clamp(16px, 2.4vw, 30px));
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    gap: clamp(1px, 0.25vw, 3px);
+    width: 100%;
+  }
+  .th-cell {
+    position: relative;
+    background: var(--th-track);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+  .th-cell i {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: var(--th-fill-pct);
+    background: var(--th-fill);
+    display: block;
+    transition: height 140ms linear;
+  }
+  /* The morph: stagger only while switching modes, so slider drags stay instant. */
+  .th-year-grid[data-anim='stagger'] .th-cell i {
+    transition: height 440ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: calc(var(--i, 0) * 1.1ms);
+  }
+  .th-grid-caption {
+    margin-top: var(--space-3);
+    font-size: var(--step-1);
+    font-weight: 600;
+    color: var(--text);
+    max-width: none;
+  }
+  .th-grid-sub { font-size: var(--step--1); color: var(--muted); margin-top: var(--space-1); }
+  .th-grid-sub em { color: var(--text); font-style: normal; font-weight: 600; }
+
+  /* ---------- Comparison bars ---------- */
+  .th-bars { margin-block: var(--space-5) var(--space-4); }
+  .th-bar-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(120px, 190px) minmax(0, 1fr) 92px;
+    align-items: center;
+    gap: var(--space-3);
+    padding-block: var(--space-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .th-bar-row:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .th-bar-label { font-size: var(--step--1); font-weight: 600; color: var(--text); }
+  .th-bar-note { display: block; font-weight: 400; color: var(--muted); font-size: 0.85em; }
+  .th-bar-track { display: block; height: 18px; background: var(--th-track); border-radius: 2px; }
+  .th-bar-fill {
+    display: block; height: 100%;
+    background: var(--th-soft);
+    border-radius: 2px 4px 4px 2px;
+    transition: width 140ms linear;
+  }
+  .th-bar-row.is-you .th-bar-fill { background: var(--th-fill); }
+  .th-bar-row.is-you .th-bar-label { color: var(--th-fill); }
+  .th-bar-value { font-size: var(--step--1); color: var(--muted); text-align: right; }
+  .th-bar-value b { color: var(--text); font-size: var(--step-0); }
+  .th-bar-tip {
+    position: absolute;
+    right: 0; bottom: 100%;
+    background: var(--text); color: var(--bg);
+    font-size: var(--step--1);
+    padding: 0.35em 0.6em;
+    border-radius: var(--radius);
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.12s ease;
+    z-index: 3;
+  }
+  .th-bar-row:hover .th-bar-tip,
+  .th-bar-row:focus-visible .th-bar-tip { opacity: 1; }
+  .th-bars-axis {
+    display: flex; justify-content: space-between;
+    font-size: var(--step--1); color: var(--muted);
+    margin-top: var(--space-2);
+  }
+
+  /* ---------- Table ---------- */
+  .th-table { border-top: 1px solid var(--line); padding-top: var(--space-3); }
+  .th-table summary {
+    cursor: pointer; font-weight: 600; font-size: var(--step--1);
+    min-height: 30px; color: var(--accent);
+  }
+  .th-table-scroll { overflow-x: auto; margin-top: var(--space-3); }
+  .th-table table { border-collapse: collapse; width: 100%; font-size: var(--step--1); }
+  .th-table caption {
+    text-align: left; color: var(--muted); font-size: var(--step--1);
+    margin-bottom: var(--space-2);
+  }
+  .th-table th, .th-table td {
+    padding: var(--space-2);
+    border-bottom: 1px solid var(--line);
+    text-align: right;
+    white-space: nowrap;
+  }
+  .th-table thead th { color: var(--muted); font-weight: 600; }
+  .th-table tbody th { text-align: left; font-weight: 600; }
+  .th-table tr.is-key { background: var(--surface); }
+  .th-table tr.is-key td, .th-table tr.is-key th { color: var(--th-fill); }
+
+  /* ---------- Caveat, essay ---------- */
+  .th-caveat { background: var(--surface); }
+  .th-caveat h2, .th-essay h2 { margin-bottom: var(--space-3); }
+  .th-caveat p, .th-essay p { margin-bottom: var(--space-4); }
+  .th-essay h2 { margin-top: var(--space-6); }
+  .th-essay h2:first-of-type { margin-top: 0; }
+  .th-qualifier {
+    background: var(--surface-2);
+    padding: var(--space-3);
+    border-radius: var(--radius);
+    font-size: var(--step--1);
+    color: var(--muted);
+  }
+
+  .th-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+  }
+  .th-tile {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: var(--space-3);
+  }
+  .th-tile.is-key { border-color: var(--th-fill); }
+  .th-tile b {
+    display: block;
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: var(--step-3);
+    line-height: 1;
+    color: var(--th-fill);
+  }
+  .th-tile span { display: block; font-size: var(--step--1); color: var(--muted); margin-top: 0.35em; }
+  .th-tiles-note { font-size: var(--step--1); color: var(--muted); }
+
+  .th-takeaway {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: var(--step-2);
+    font-weight: 600;
+    color: var(--th-fill);
+    border-left: 3px solid var(--th-fill);
+    padding-left: var(--space-3);
+    margin-bottom: var(--space-4);
+  }
+
+  /* ---------- Method ---------- */
+  .th-method { padding-top: 0; }
+  .th-method details {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding-block: var(--space-3);
+  }
+  .th-method summary { cursor: pointer; font-weight: 600; min-height: 30px; }
+  .th-method-body { margin-top: var(--space-3); }
+  .th-method-body p { font-size: var(--step--1); color: var(--muted); margin-bottom: var(--space-3); }
+  .th-method-body strong { color: var(--text); }
+  .th-back { margin-top: var(--space-5); }
+
+  /* ---------- Responsive ---------- */
+  @media (min-width: 720px) {
+    .th-fractions { grid-template-columns: 1fr 1fr; }
+    .th-controls { grid-template-columns: minmax(0, 1fr) auto; align-items: end; }
+  }
+  @media (max-width: 860px) {
+    .th-hero-inner { grid-template-columns: 1fr; gap: var(--space-5); }
+    .th-rings { order: -1; }
+    .th-rings svg { max-width: 220px; }
+  }
+  @media (max-width: 560px) {
+    .th-bar-row { grid-template-columns: minmax(90px, 1fr) minmax(0, 1.1fr) 74px; gap: var(--space-2); }
+    .th-bar-value b { font-size: var(--step--1); }
+    .th-twelve span { height: 34px; }
+    .th-year-grid { gap: 1px; }
+    .th-bar-tip { right: auto; left: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .th-cell i, .th-bar-fill { transition: none !important; }
+    .th-year-grid[data-anim='stagger'] .th-cell i { transition-delay: 0ms !important; }
+  }
+</style>
+
+<script is:inline define:vars={{ YEAR, MONTH, WAKING, CAREER, AXIS_DAYS: axisDays }}>
+  /* One source of truth, mirroring the frontmatter. */
+  const daysPerYear = (h) => (h * YEAR) / 24;
+
+  const grid = document.getElementById('th-grid');
+  const slider = document.getElementById('th-hours');
+  const calc = document.querySelector('.th-calc');
+  const cells = grid ? Array.from(grid.querySelectorAll('.th-cell i')) : [];
+  const out = (name) => document.querySelector(`[data-th="${name}"]`);
+
+  if (calc && slider && cells.length) {
+    const chips = Array.from(document.querySelectorAll('.th-chip'));
+    const modes = Array.from(document.querySelectorAll('.th-mode'));
+    const lastPct = new Array(cells.length).fill(null);
+
+    let hours = 2;
+    let mode = 'daily';
+    let staggerTimer = 0;
+    let frame = 0;
+
+    /* Stagger delays are a JS-only enhancement, so they are set here, not in the markup. */
+    cells.forEach((c, i) => c.style.setProperty('--i', String(i)));
+
+    const d1 = (n) => n.toFixed(1);
+    const d2 = (n) => n.toFixed(2);
+
+    function fmtHours(h) {
+      const H = Math.floor(h + 1e-9);
+      const M = Math.round((h - H) * 60);
+      if (!H && !M) return '0 hours';
+      if (!H) return M + ' minutes';
+      const head = H + (H === 1 ? ' hour' : ' hours');
+      return M ? head + ' ' + M + ' minutes' : head;
+    }
+
+    function monthsPhrase(months) {
+      if (Math.abs(months - 1) < 0.005) return 'one full month';
+      return d2(months) + ' months';
+    }
+
+    function paint() {
+      const days = daysPerYear(hours);
+      const months = days / MONTH;
+
+      /* Grid */
+      if (mode === 'daily') {
+        grid.style.setProperty('--th-fill-pct', (hours / 24) * 100 + '%');
+        for (let i = 0; i < cells.length; i++) {
+          if (lastPct[i] !== null) { cells[i].style.removeProperty('height'); lastPct[i] = null; }
+        }
+      } else {
+        const whole = Math.floor(days);
+        const frac = days - whole;
+        for (let i = 0; i < cells.length; i++) {
+          const pct = i < whole ? 100 : i === whole ? frac * 100 : 0;
+          if (lastPct[i] === null || Math.abs(lastPct[i] - pct) > 0.01) {
+            cells[i].style.height = pct + '%';
+            lastPct[i] = pct;
+          }
+        }
+      }
+
+      /* Numbers */
+      const hoursText = fmtHours(hours);
+      out('hoursText').textContent = hoursText;
+      out('days').textContent = d1(days);
+      out('months').textContent = d2(months);
+      out('wakingDays').textContent = d1((hours * YEAR) / WAKING);
+      out('careerYears').textContent = d1((hours * YEAR * CAREER) / 24 / YEAR);
+
+      /* Grid caption and its accessible description */
+      if (mode === 'daily') {
+        out('caption').textContent = hoursText + ' taken out of every one of the 365 days.';
+        grid.setAttribute(
+          'aria-label',
+          `A year of 365 days. Every day is shaded by ${d1((hours / 24) * 100)} per cent — ${hoursText} out of 24.`
+        );
+      } else {
+        out('caption').textContent = d1(days) + ' whole days — ' + monthsPhrase(months) + '.';
+        grid.setAttribute(
+          'aria-label',
+          `A year of 365 days. The first ${d1(days)} days are shaded solid: ${monthsPhrase(months)} of the year.`
+        );
+      }
+
+      /* The "your setting" bar */
+      out('youBar').style.width = Math.min(100, (days / AXIS_DAYS) * 100) + '%';
+      out('youValue').textContent = d1(days);
+      out('youNote').textContent = hoursText + ' a day';
+      out('youTip').textContent = d2(months) + ' months · ' + d1((hours * YEAR) / WAKING) + ' waking days';
+
+      /* Controls */
+      slider.setAttribute('aria-valuetext', hoursText + ' a day');
+      chips.forEach((c) =>
+        c.setAttribute('aria-pressed', String(Math.abs(Number(c.dataset.hours) - hours) < 0.005))
+      );
+
+      try {
+        history.replaceState(null, '', '#h=' + Number(hours.toFixed(3)));
+      } catch (_) { /* file:// and some embeds disallow this */ }
+    }
+
+    function schedule() {
+      if (frame) return;
+      frame = requestAnimationFrame(() => { frame = 0; paint(); });
+    }
+
+    function setHours(h, immediate) {
+      hours = Math.min(8, Math.max(0, h));
+      slider.value = String(Math.round(hours * 60));
+      immediate ? paint() : schedule();
+    }
+
+    function setMode(next) {
+      if (next === mode) return;
+      mode = next;
+      modes.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
+      grid.dataset.mode = mode;
+      grid.dataset.anim = 'stagger';
+      clearTimeout(staggerTimer);
+      staggerTimer = setTimeout(() => grid.removeAttribute('data-anim'), 1000);
+      paint();
+    }
+
+    slider.addEventListener('input', () => setHours(Number(slider.value) / 60));
+
+    /* Native arrow keys would step one minute at a time — 480 presses end to end.
+       Coarser keyboard steps, mouse and presets keep full precision. */
+    slider.addEventListener('keydown', (e) => {
+      const step = e.key === 'PageUp' || e.key === 'PageDown' ? 60 : 15;
+      const dir =
+        e.key === 'ArrowRight' || e.key === 'ArrowUp' || e.key === 'PageUp' ? 1 :
+        e.key === 'ArrowLeft' || e.key === 'ArrowDown' || e.key === 'PageDown' ? -1 : 0;
+      if (!dir) return;
+      e.preventDefault();
+      const mins = Math.round((hours * 60) / step) * step + dir * step;
+      setHours(mins / 60, true);
+    });
+
+    chips.forEach((c) =>
+      c.addEventListener('click', () => setHours(Number(c.dataset.hours), true))
+    );
+    modes.forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode)));
+
+    /* Shareable state: #h=2.65 */
+    const fromHash = parseFloat((location.hash.match(/h=(-?[\d.]+)/) || [])[1]);
+    const start = Number.isFinite(fromHash) ? fromHash : 2;
+
+    calc.hidden = false;
+    setHours(start, true);
+  }
+</script>

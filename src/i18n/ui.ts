@@ -52,6 +52,13 @@ export const translations = {
     civicChatbotCta: 'Read the note',
 
     // Notes and experiments
+    // Two hours a day
+    twoHoursName: 'Two hours a day',
+    twoHoursStatus: 'Live',
+    twoHoursDescription: 'An interactive page about one piece of arithmetic: two hours a day is exactly one month a year. Set your own daily hours and watch a year of 365 days rearrange itself.',
+    twoHoursReason: 'The figure sounds like an exaggeration and turns out to be an identity — a month is a twelfth of a year, two hours is a twelfth of a day. It is worth being able to see that, not just be told it.',
+    twoHoursCta: 'Do the arithmetic',
+
     notesAndExperimentsName: 'Notes and experiments',
     notesAndExperimentsStatus: 'Always shipping',
     notesAndExperimentsDescription: 'Things learned while making software people can actually use.',
@@ -122,6 +129,12 @@ export const translations = {
     civicChatbotReason: 'Portalurile guvernamentale sortează după câmpuri și meniuri. Un cetățean cu o întrebare are o problemă de căutare, nu o problemă de informație.',
     civicChatbotCta: 'Citește nota',
 
+    twoHoursName: 'Două ore pe zi',
+    twoHoursStatus: 'Lansat',
+    twoHoursDescription: 'O pagină interactivă despre un singur calcul: două ore pe zi înseamnă exact o lună pe an. Alege câte ore petreci zilnic și vezi cum se rearanjează un an de 365 de zile.',
+    twoHoursReason: 'Cifra pare o exagerare, dar este de fapt o identitate — o lună este a douăsprezecea parte dintr-un an, iar două ore sunt a douăsprezecea parte dintr-o zi. Merită să poți vedea asta, nu doar să ți se spună.',
+    twoHoursCta: 'Vezi calculul',
+
     notesAndExperimentsName: 'Note și experimente',
     notesAndExperimentsStatus: 'Întotdeauna în lucru',
     notesAndExperimentsDescription: 'Ce iese din uz — ciorne despre cum lucrez.',
@@ -186,6 +199,12 @@ export const translations = {
     civicChatbotDescription: 'Egy csak olvasható chatbot, amely 200K nyilvános rekordot tesz elérhetővé egy egyszerű kérdés mögött. A polgárok románul kérdeznek, a bot panaszokból, tanácsi határozatokból, engedélyekből és helyi hírekből válaszol.',
     civicChatbotReason: 'A kormányzati portálok űrlapmezők és legördülő menük szerint rendeznek. Egy kérdéssel rendelkező polgár keresési problémával néz szembe, nem információs problémával.',
     civicChatbotCta: 'Olvassa el a jegyzetet',
+
+    twoHoursName: 'Napi két óra',
+    twoHoursStatus: 'Elérhető',
+    twoHoursDescription: 'Interaktív oldal egyetlen számításról: napi két óra pontosan egy hónap egy évben. Állítsd be a saját napi óráidat, és nézd meg, hogyan rendeződik újra egy 365 napos év.',
+    twoHoursReason: 'A szám túlzásnak hangzik, pedig azonosság — egy hónap az év tizenketted része, két óra pedig a nap tizenketted része. Ezt érdemes látni is, nem csak hallani.',
+    twoHoursCta: 'Nézd meg a számítást',
 
     notesAndExperimentsName: 'Jegyzetek és kísérletek',
     notesAndExperimentsStatus: 'Folyamatosan frissül',
