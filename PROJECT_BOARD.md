@@ -134,6 +134,22 @@ Remaining:
 - Which portrait file is the final MVP portrait? (Currently using SVG placeholder)
 - What is the final public URL for `clujparticipa` once live?
 
+## Ideas — Making the Site More Interesting
+
+The MVP is a well-made brochure. The gap: the site itself is neither playful nor civic. These ideas each add interactivity or freshness while staying within the editorial design language.
+
+### A. Embedded isthisai round
+
+One AI-or-not question playable right on the homepage. Player sees an image, guesses, gets the answer. Technical question: can we load a single game round as a lightweight Astro island with zero impact on page load? This directly showcases your product and makes the site playable.
+
+### B. Now / Status section
+
+A dynamic section showing what you're currently working on, reading, or thinking about. Technical question: can we pull live data from GitHub API + a simple JSON file to render a "now" section that stays fresh without a CMS? Matches the "building in public" ethos.
+
+### C. Subtle daily generator
+
+A small daily-changing element — a rotating civic question, a daily tagline, or a micro-prompt. Technical question: can we generate a deterministic daily element from a date seed (no JS runtime, no external API) so return visits feel different? Very low-risk, matches editorial restraint.
+
 ## Risks
 
 - Triple-language launch may slow content completion if note translations are treated as required
